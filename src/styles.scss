@@ -1,0 +1,57 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "variable.scss";
+@import "auth.scss";
+.btn-primary {
+    background-color: $primary !important;
+    border: none !important;
+}
+
+.btn-primary:hover {
+    background-color: $primary-bg-light !important;
+}
+
+.color-gray {
+    color: $gray-400;
+}
+
+label.form-label.fw-lighter.fs-sm.pass {
+    font-size: 12px;
+    color: $gray-400;
+}
+
+.color-primary {
+    color: $primary;
+}
+
+// .bg {
+//     background-color: $primary;
+// }
+// h1 {
+//     color: $primary;
+// }
+// login::beg
+.gradient-custom-2 {
+    /* fallback for old browsers */
+    background: $primary;
+    /* Chrome 10-25, Safari 5.1-6 */
+    // background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    // background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+    background: linear-gradient(162.21deg, #3A9BD5 3.75%, #0164AE 103.44%);
+}
+
+@media (min-width: 768px) {
+    .gradient-form {
+        height: 100vh !important;
+    }
+}
+
+@media (min-width: 769px) {
+    .gradient-custom-2 {
+        border-top-right-radius: .3rem;
+        border-bottom-right-radius: .3rem;
+    }
+}
+
+// login::end
