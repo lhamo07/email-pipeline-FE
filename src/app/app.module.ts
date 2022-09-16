@@ -8,6 +8,7 @@ import { SignupComponent } from './Auth/signup/signup.component';
 import { MfaComponent } from './Auth/mfa/mfa.component';
 import { ResetPasswordComponent } from './Auth/reset-password/reset-password.component';
 import { NewPasswordComponent } from './Auth/new-password/new-password.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { NewPasswordComponent } from './Auth/new-password/new-password.component
     SignupComponent,
     MfaComponent,
     ResetPasswordComponent,
-    NewPasswordComponent
+    NewPasswordComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

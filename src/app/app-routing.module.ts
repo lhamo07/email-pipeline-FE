@@ -5,13 +5,15 @@ import { MfaComponent } from './Auth/mfa/mfa.component';
 import { NewPasswordComponent } from './Auth/new-password/new-password.component';
 import { ResetPasswordComponent } from './Auth/reset-password/reset-password.component';
 import { SignupComponent } from './Auth/signup/signup.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'reset-password', component: ResetPasswordComponent},
   {path: 'new-password', component: NewPasswordComponent},
-  {path: 'mfa', component: MfaComponent}
+  {path: 'mfa', component: MfaComponent},
+  {path: 'dashboard', component: DashboardComponent}
 ];
 
 @NgModule({
