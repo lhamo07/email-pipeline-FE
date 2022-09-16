@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService, IUser } from 'src/app/service/auth.service';
-// import { ToastNotificationService } from 'src/app/service/toast-notification.service';
+import { ToastNotificationService } from 'src/app/service/toast-notification.service';
 
 @Component({
   selector: 'app-signup',
@@ -17,9 +17,9 @@ export class SignupComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private router: Router
-  ) // private notify: ToastNotificationService
-  {
+    private router: Router,
+    private notify: ToastNotificationService
+  ) {
     this.user = {} as IUser;
   }
 
@@ -43,7 +43,7 @@ export class SignupComponent implements OnInit {
       .signUp(this.user)
       .then(() => {
         this.isConfirm = true;
-        // this.notify.showSuccess('Register successfully');
+        this.notify.showSuccess('Register successfully');
         // this.router.navigate(['/code']);
       })
       .catch((error) => {

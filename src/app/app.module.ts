@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,9 +10,9 @@ import { MfaComponent } from './Auth/mfa/mfa.component';
 import { ResetPasswordComponent } from './Auth/reset-password/reset-password.component';
 import { NewPasswordComponent } from './Auth/new-password/new-password.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
-
 
 @NgModule({
   declarations: [
@@ -21,14 +22,16 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     MfaComponent,
     ResetPasswordComponent,
     NewPasswordComponent,
-    DashboardComponent
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
