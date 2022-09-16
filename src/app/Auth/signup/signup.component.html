@@ -20,23 +20,12 @@
                                     </div> -->
 
                     <div class="form-outline mb-3">
-                      <label class="form-label" for="form22Example2"
-                        >Email Address</label
-                      >
-                      <input
-                        type="email"
-                        id="email"
-                        class="form-control"
-                        placeholder="john@gmail.com"
+                      <label class="form-label" for="form22Example2">Email Address</label>
+                      <input type="email" id="email" class="form-control" placeholder="john@gmail.com"
                         formControlName="email"
-                      />
-                      <span
-                        class="text-danger"
-                        *ngIf="
-                          registerForm.get('email')?.invalid &&
-                          registerForm.get('email')?.touched
-                        "
-                      >
+                        [ngClass]="{ 'is-invalid' : !registerForm.get('email')?.valid && (registerForm.get('email')?.touched || registerForm.get('email')?.dirty)}" />
+                      <span class="text-danger"
+                        *ngIf="!registerForm.get('email')?.valid && (registerForm.get('email')?.touched || registerForm.get('email')?.dirty)">
                         Please Enter a valid email
                       </span>
                     </div>
@@ -47,48 +36,53 @@
                                     </div> -->
 
                     <div class="form-outline mb-4">
-                      <label class="form-label" for="form2Example44"
-                        >Create Password</label
-                      >
-                      <input
-                        type="password"
-                        id="password"
-                        class="form-control"
-                        formControlName="password"
-                      />
-                      <!-- <span
-                        class="text-danger"
-                        *ngIf="
-                          registerForm.get('password')?.invalid &&
-                          registerForm.get('password')?.touched
-                        "
-                      >
-                        please enter strong password
-                      </span> -->
-                      <label
-                        class="form-label fw-lighter fs-sm pass"
-                        for="form2Example44"
-                        >Password must contain 8 characters & at least one
-                        symbol eg.#</label
-                      >
+                      <label class="form-label" for="form2Example44">Create Password</label>
+                      <input type="password" id="password" class="form-control" formControlName="password"
+                        [ngClass]="{ 'is-invalid' : !registerForm.get('password')?.valid && (registerForm.get('password')?.touched || registerForm.get('password')?.dirty) }" />
+                      <div *ngIf="registerForm.controls['password'].dirty">
+                        <label [ngClass]="errorCatcher('hasSmallCase','password')  ? 'text-danger' : 'text-success'">
+                          <i-feather class="icon-sm" [name]="errorCatcher('hasSmallCase','password') ? 'X' :'check'">
+                          </i-feather>
+                          <small class="font-weight-normal alert-text-inner">Password
+                            must contain a lower case letter</small>
+                        </label>
+                        <label [ngClass]="errorCatcher('hasCapitalCase','password')  ? 'text-danger' : 'text-success'">
+                          <i-feather class="icon-sm" [name]="errorCatcher('hasCapitalCase','password') ? 'X' :'check'">
+                          </i-feather>
+                          <small class="font-weight-normal alert-text-inner">
+                            Password must contain an upper case letter</small>
+                        </label>
+                        <label [ngClass]="errorCatcher('hasNumber','password')  ? 'text-danger' : 'text-success'">
+                          <i-feather class="icon-sm" [name]="errorCatcher('hasNumber','password') ? 'X' :'check'">
+                          </i-feather>
+                          <small class="font-weight-normal alert-text-inner">
+                            Password must contain a number</small>
+                        </label>
+                        <label [ngClass]="errorCatcher('minlength','password')  ? 'text-danger' : 'text-success'">
+                          <i-feather class="icon-sm" [name]="errorCatcher('minlength','password') ? 'X' :'check'">
+                          </i-feather>
+                          <small class="font-weight-normal alert-text-inner">
+                            Password must contain at least 8 characters</small>
+                        </label>
+                        <label
+                          [ngClass]="errorCatcher('hasSpecialCharacters','password')  ? 'text-danger' : 'text-success'">
+                          <i-feather class="icon-sm"
+                            [name]="errorCatcher('hasSpecialCharacters','password') ? 'X' :'check'"></i-feather>
+                          <small class="font-weight-normal alert-text-inner">
+                            Password must contain a special characters</small>
+                        </label>
+                      </div>
                     </div>
 
                     <div class="text-center pt-1 mb-4 pb-1">
                       <!-- <button class="btn btn-primary btn-lg gradient-custom-2 mb-3" type="button">Sign Up</button> -->
-                      <a href="/mfa"
-                        ><button
-                          type="submit"
-                          class="btn btn-primary btn-lg w-100"
-                        >
+                      <a href="/mfa"><button type="submit" class="btn btn-primary btn-lg w-100">
                           Sign Up
-                        </button></a
-                      >
+                        </button></a>
                       <!-- <a class="text-muted" href="#!">Forgot password?</a> -->
                     </div>
 
-                    <div
-                      class="d-flex align-items-center justify-content-center pb-4"
-                    >
+                    <div class="d-flex align-items-center justify-content-center pb-4">
                       <p class="mb-0 me-2 color-gray">Already a User?</p>
                       <a href="/login" class="color-primary">Login</a>
                       <!-- <button type="button" class="btn btn-outline-danger">Login</button> -->
@@ -106,33 +100,19 @@
 
                   <form [formGroup]="registerForm" (ngSubmit)="confirmSignUp()">
                     <div class="form-outline mb-4">
-                      <label class="form-label" for="form2Example44"
-                        >Type your 6 digit security code</label
-                      >
-                      <input
-                        type="text"
-                        id="code"
-                        placeholder="987651"
-                        class="form-control"
-                        formControlName="code"
-                      />
+                      <label class="form-label" for="form2Example44">Type your 6 digit security code</label>
+                      <input type="text" id="code" placeholder="987651" class="form-control" formControlName="code" />
                     </div>
 
                     <div class="text-center pt-1 mb-4 pb-1">
                       <!-- <button class="btn btn-primary btn-lg gradient-custom-2 mb-3" type="button">Sign Up</button> -->
                       <a href="/login">
-                        <button
-                          type="submit"
-                          class="btn btn-primary btn-lg w-100"
-                        >
+                        <button type="submit" class="btn btn-primary btn-lg w-100">
                           Submit
-                        </button></a
-                      >
+                        </button></a>
                       <!-- <a class="text-muted" href="#!">Forgot password?</a> -->
                     </div>
-                    <div
-                      class="d-flex align-items-center justify-content-center pb-4"
-                    >
+                    <div class="d-flex align-items-center justify-content-center pb-4">
                       <!-- <p class="mb-0 me-2 color-gray">Didn’t get the code ?</p> -->
                       <!-- <a href="/signup" class="color-primary">Resend</a> -->
                       <!-- <button type="button" class="btn btn-outline-danger">Login</button> -->
@@ -149,11 +129,7 @@
                 <!-- <p class="small mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
                                     consequat.
                                 </p> -->
-                <img
-                  src="./assets/img/email-pipeline.png"
-                  class="w-100 mt-5"
-                  alt=""
-                />
+                <img src="./assets/img/email-pipeline.png" class="w-100 mt-5" alt="" />
               </div>
             </div>
           </div>

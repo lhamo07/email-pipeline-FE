@@ -3,6 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService, IUser } from 'src/app/service/auth.service';
 import { ToastNotificationService } from 'src/app/service/toast-notification.service';
+import { CustomValidators } from 'src/app/helper/custom.validator';
+import { Icons } from 'angular-feather/lib/icons.provider';
 
 @Component({
   selector: 'app-signup',
@@ -26,10 +28,31 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
     this.registerForm = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),
-      password: new FormControl(null, [
-        Validators.required,
-        Validators.minLength(5),
-      ]),
+      password: new FormControl("", 
+        Validators.compose([
+          Validators.required,
+          // check whether the entered password has a number
+          CustomValidators.patternValidator(/\d/, {
+            hasNumber: true
+          }),
+          // check whether the entered password has upper case letter
+          CustomValidators.patternValidator(/[A-Z]/, {
+            hasCapitalCase: true
+          }),
+          // check whether the entered password has a lower case letter
+          CustomValidators.patternValidator(/[a-z]/, {
+            hasSmallCase: true
+          }),
+          // check whether the entered password has a special character
+          CustomValidators.patternValidator(
+            /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/,
+            {
+              hasSpecialCharacters: true
+            }
+          ),
+          Validators.minLength(8)
+        ])
+      ),
       code: new FormControl(null),
     });
   }
@@ -65,5 +88,9 @@ export class SignupComponent implements OnInit {
       .catch(() => {
         this.loading = false;
       });
+  }
+
+  errorCatcher(type: string, control: string): boolean{
+    return this.registerForm.controls[control].hasError('required') || this.registerForm.controls[control].hasError(type)
   }
 }
