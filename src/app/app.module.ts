@@ -11,6 +11,7 @@ import { ResetPasswordComponent } from './Auth/reset-password/reset-password.com
 import { NewPasswordComponent } from './Auth/new-password/new-password.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
+import { IconsModule } from './icons/icons.module';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 
@@ -30,6 +31,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    IconsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

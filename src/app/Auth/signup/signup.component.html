@@ -29,13 +29,11 @@
                         class="form-control"
                         placeholder="john@gmail.com"
                         formControlName="email"
+                        [ngClass]="{ 'is-invalid' : !registerForm.get('email')?.valid && (registerForm.get('email')?.touched || registerForm.get('email')?.dirty)}"
                       />
                       <span
                         class="text-danger"
-                        *ngIf="
-                          registerForm.get('email')?.invalid &&
-                          registerForm.get('email')?.touched
-                        "
+                        *ngIf="!registerForm.get('email')?.valid && (registerForm.get('email')?.touched || registerForm.get('email')?.dirty)"
                       >
                         Please Enter a valid email
                       </span>
@@ -55,22 +53,40 @@
                         id="password"
                         class="form-control"
                         formControlName="password"
+                        [ngClass]="{ 'is-invalid' : !registerForm.get('password')?.valid && (registerForm.get('password')?.touched || registerForm.get('password')?.dirty) }"
                       />
-                      <!-- <span
-                        class="text-danger"
-                        *ngIf="
-                          registerForm.get('password')?.invalid &&
-                          registerForm.get('password')?.touched
-                        "
-                      >
-                        please enter strong password
-                      </span> -->
-                      <label
-                        class="form-label fw-lighter fs-sm pass"
-                        for="form2Example44"
-                        >Password must contain 8 characters & at least one
-                        symbol eg.#</label
-                      >
+                      <div *ngIf="registerForm.controls['password'].dirty">
+                        <label [ngClass]="errorCatcher('hasSmallCase','password')  ? 'text-danger' : 'text-success'">
+                          <i-feather class="icon-sm" [name]="errorCatcher('hasSmallCase','password') ? 'X' :'check'"></i-feather>
+                          <small
+                            class="font-weight-normal alert-text-inner">Password
+                            must contain a lower case letter</small>
+                        </label>
+                        <label [ngClass]="errorCatcher('hasCapitalCase','password')  ? 'text-danger' : 'text-success'">
+                          <i-feather class="icon-sm" [name]="errorCatcher('hasCapitalCase','password') ? 'X' :'check'"></i-feather>
+                          <small
+                            class="font-weight-normal alert-text-inner">
+                            Password must contain an upper case letter</small>
+                        </label>
+                        <label [ngClass]="errorCatcher('hasNumber','password')  ? 'text-danger' : 'text-success'">
+                          <i-feather class="icon-sm" [name]="errorCatcher('hasNumber','password') ? 'X' :'check'"></i-feather>
+                          <small
+                            class="font-weight-normal alert-text-inner">
+                            Password must contain a number</small>
+                        </label>
+                        <label [ngClass]="errorCatcher('minlength','password')  ? 'text-danger' : 'text-success'">
+                          <i-feather class="icon-sm" [name]="errorCatcher('minlength','password') ? 'X' :'check'"></i-feather>
+                          <small
+                            class="font-weight-normal alert-text-inner">
+                            Password must contain at least 8 characters</small>
+                        </label>
+                        <label [ngClass]="errorCatcher('hasSpecialCharacters','password')  ? 'text-danger' : 'text-success'">
+                          <i-feather class="icon-sm" [name]="errorCatcher('hasSpecialCharacters','password') ? 'X' :'check'"></i-feather>
+                          <small
+                            class="font-weight-normal alert-text-inner">
+                            Password must contain a special characters</small>
+                        </label>
+                      </div>
                     </div>
 
                     <div class="text-center pt-1 mb-4 pb-1">
