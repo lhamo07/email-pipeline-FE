@@ -3,8 +3,6 @@ import { BehaviorSubject } from 'rxjs';
 import Amplify, { Auth } from 'aws-amplify';
 import { environment } from 'src/environments/environment';
 
-
-
 export interface IUser {
   email: string;
   password: string;
@@ -14,16 +12,18 @@ export interface IUser {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   private authenticationSubject: BehaviorSubject<any>;
 
-  constructor() {  Amplify.configure({
-    Auth: environment.cognito,
-  });
+  constructor() {
+    Amplify.configure({
+      Auth: environment.cognito,
+    });
 
-  this.authenticationSubject = new BehaviorSubject<boolean>(false);}
+    this.authenticationSubject = new BehaviorSubject<boolean>(false);
+  }
 
   public signUp(user: IUser): Promise<any> {
     //console.log("hello");

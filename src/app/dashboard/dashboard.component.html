@@ -13,13 +13,13 @@
     >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="navbar-collapse collapse" id="navbarSupportedContent" style="">
+    <div class="navbar-collapse collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#!">Dashboard</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/logout"
+          <a class="nav-link" href="/login" (click)="signOut()"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -242,7 +242,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr role="row" class="odd" *ngFor="let delivery of deliveryData">
+              <tr role="row" class="odd" *ngFor="let delivery of filterdPost">
                 <td class="sorting_1">{{ delivery.SMTPresponse }}</td>
                 <td>{{ delivery.SnsPublishTime }}</td>
                 <td>{{ delivery.SESSenderAddress }}</td>
@@ -346,7 +346,7 @@
             role="status"
             aria-live="polite"
           >
-            Showing 1 to 10 of 57 entries
+            Showing {{ startPage }} to {{ endPage }} of 57 entries
           </div>
         </div>
         <div class="col-sm-12 col-md-7">
@@ -365,30 +365,29 @@
                   data-dt-idx="0"
                   tabindex="0"
                   class="page-link"
+                  (click)="gotoPreviousPage()"
                   >Previous</a
                 >
               </li>
               <li class="paginate_button page-item active">
                 <a
-                  href="#"
                   aria-controls="dtBasicExample"
-                  data-dt-idx="1"
+                  data-dt-idx="7"
                   tabindex="0"
                   class="page-link"
-                  >1</a
+                  >{{ pageNumber }}</a
                 >
               </li>
-              <li class="paginate_button page-item">
+              <!-- <li class="paginate_button page-item">
                 <a
-                  href="#"
                   aria-controls="dtBasicExample"
                   data-dt-idx="2"
                   tabindex="0"
                   class="page-link"
-                  >2</a
+                  >{{ pageNumber + 1 }}</a
                 >
-              </li>
-              <li class="paginate_button page-item">
+              </li> -->
+              <!-- <li class="paginate_button page-item">
                 <a
                   href="#"
                   aria-controls="dtBasicExample"
@@ -427,17 +426,17 @@
                   class="page-link"
                   >6</a
                 >
-              </li>
+              </li> -->
               <li
                 class="paginate_button page-item next"
                 id="dtBasicExample_next"
               >
                 <a
-                  href="#"
                   aria-controls="dtBasicExample"
                   data-dt-idx="7"
                   tabindex="0"
                   class="page-link"
+                  (click)="gottoNextPage()"
                   >Next</a
                 >
               </li>
