@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { AuthService, IUser } from 'src/app/service/auth.service';
 import { ToastNotificationService } from 'src/app/service/toast-notification.service';
 import { CustomValidators } from 'src/app/helper/custom.validator';
-import { Icons } from 'angular-feather/lib/icons.provider';
 
 @Component({
   selector: 'app-signup',
@@ -15,6 +14,7 @@ export class SignupComponent implements OnInit {
   registerForm!: FormGroup;
   isConfirm: boolean = false;
   loading: boolean = false;
+  showPassword: boolean = false;
   user: IUser;
 
   constructor(
@@ -29,30 +29,30 @@ export class SignupComponent implements OnInit {
     this.registerForm = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl("", 
-        Validators.compose([
-          Validators.required,
-          // check whether the entered password has a number
-          CustomValidators.patternValidator(/\d/, {
-            hasNumber: true
-          }),
-          // check whether the entered password has upper case letter
-          CustomValidators.patternValidator(/[A-Z]/, {
-            hasCapitalCase: true
-          }),
-          // check whether the entered password has a lower case letter
-          CustomValidators.patternValidator(/[a-z]/, {
-            hasSmallCase: true
-          }),
-          // check whether the entered password has a special character
-          CustomValidators.patternValidator(
-            /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/,
-            {
-              hasSpecialCharacters: true
-            }
-          ),
-          Validators.minLength(8)
-        ])
-      ),
+      Validators.compose([
+        Validators.required,
+        // check whether the entered password has a number
+        CustomValidators.patternValidator(/\d/, {
+          hasNumber: true
+        }),
+        // check whether the entered password has upper case letter
+        CustomValidators.patternValidator(/[A-Z]/, {
+          hasCapitalCase: true
+        }),
+        // check whether the entered password has a lower case letter
+        CustomValidators.patternValidator(/[a-z]/, {
+          hasSmallCase: true
+        }),
+        // check whether the entered password has a special character
+        CustomValidators.patternValidator(
+          /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/,
+          {
+            hasSpecialCharacters: true
+          }
+        ),
+        Validators.minLength(8)
+      ])
+    ),
       code: new FormControl(null),
     });
   }
@@ -73,6 +73,10 @@ export class SignupComponent implements OnInit {
         console.log('error', error);
       });
     // console.log('user', this.user.email);
+  }
+
+  changeKeyType() {
+    this.showPassword = !this.showPassword;
   }
 
   public confirmSignUp() {
