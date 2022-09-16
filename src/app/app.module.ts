@@ -10,6 +10,9 @@ import { ResetPasswordComponent } from './Auth/reset-password/reset-password.com
 import { NewPasswordComponent } from './Auth/new-password/new-password.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { DashboardComponent } from './dashboard/dashboard.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +20,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     SignupComponent,
     MfaComponent,
     ResetPasswordComponent,
-    NewPasswordComponent
+    NewPasswordComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
