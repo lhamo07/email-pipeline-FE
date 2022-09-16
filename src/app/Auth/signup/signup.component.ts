@@ -7,18 +7,21 @@ import { AuthService, IUser } from 'src/app/service/auth.service';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.scss']
+  styleUrls: ['./signup.component.scss'],
 })
-export class SignupComponent implements OnInit {  
+export class SignupComponent implements OnInit {
   registerForm!: FormGroup;
   isConfirm: boolean = false;
   loading: boolean = false;
   user: IUser;
 
-  constructor(  
+  constructor(
     private authService: AuthService,
-    // private notify: ToastNotificationService
-   ) { this.user = {} as IUser; }
+    private router: Router
+  ) // private notify: ToastNotificationService
+  {
+    this.user = {} as IUser;
+  }
 
   ngOnInit(): void {
     this.registerForm = new FormGroup({
@@ -57,11 +60,10 @@ export class SignupComponent implements OnInit {
     this.authService
       .confirmSignUp(this.user)
       .then(() => {
-        // this.router.navigate(['/login']);
+        this.router.navigate(['/login']);
       })
       .catch(() => {
         this.loading = false;
       });
   }
-
 }
