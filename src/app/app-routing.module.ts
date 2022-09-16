@@ -11,7 +11,7 @@ const routes: Routes = [
   {path: 'signup', component: SignupComponent},
   {path: 'reset-password', component: ResetPasswordComponent},
   {path: 'new-password', component: NewPasswordComponent},
-  {path: 'mfa', component: MfaComponent}
+  // {path: 'mfa', component: MfaComponent}
 ];
 
 @NgModule({

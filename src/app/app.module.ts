@@ -8,6 +8,7 @@ import { SignupComponent } from './Auth/signup/signup.component';
 import { MfaComponent } from './Auth/mfa/mfa.component';
 import { ResetPasswordComponent } from './Auth/reset-password/reset-password.component';
 import { NewPasswordComponent } from './Auth/new-password/new-password.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { NewPasswordComponent } from './Auth/new-password/new-password.component
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

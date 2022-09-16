@@ -6,39 +6,56 @@
                     <div class="row g-0">
                         <div class="col-lg-6">
                             <div class="card-body p-md-5 mx-md-1">
-
+                                <ng-container *ngIf="!isConfirm">
                                 <div class="text-left">
                                     <!-- <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp" style="width: 185px;" alt="logo"> -->
                                     <h4 class="mt-1 mb-4 pb-1">Create an Account</h4>
                                 </div>
 
-                                <form>
+                                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
                                     <!-- <p>Please login to your account</p> -->
-                                    <div class="form-outline mb-3">
+                                    <!-- <div class="form-outline mb-3">
                                         <label class="form-label" for="form2Example11">Fullname</label>
                                         <input type="text" id="form2Example11" class="form-control" placeholder="John Shrestha" />
-                                    </div>
+                                    </div> -->
 
                                     <div class="form-outline mb-3">
                                         <label class="form-label" for="form22Example2">Email Address</label>
-                                        <input type="email" id="form2Example22" class="form-control" placeholder="john@gmail.com" />
+                                        <input type="email" id="email" class="form-control" placeholder="john@gmail.com" formControlName="email"/>
+                                        <span
+                                        class="text-danger"
+                                        *ngIf="
+                                          registerForm.get('email')?.invalid &&
+                                          registerForm.get('email')?.touched
+                                        "
+                                      >
+                                        Please Enter a valid email
+                                      </span>
                                     </div>
 
-                                    <div class="form-outline mb-3">
+                                    <!-- <div class="form-outline mb-3">
                                         <label class="form-label" for="form2Example33">Phone Number</label>
                                         <input type="number" id="form2Example33" class="form-control" placeholder="+987654123x" />
-                                    </div>
+                                    </div> -->
 
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="form2Example44">Create Password</label>
-                                        <input type="password" id="form2Example44" class="form-control" />
-                                        <label class="form-label fw-lighter fs-sm pass" for="form2Example44">Password must contain 8 characters & at least one symbol eg.#</label>
+                                        <input type="password" id="password" class="form-control" formControlName="password" />
+                                        <span
+                                        class="text-danger"
+                                        *ngIf="
+                                          registerForm.get('password')?.invalid &&
+                                          registerForm.get('password')?.touched
+                                        "
+                                      >
+                                        please enter strong password
+                                      </span>
 
                                     </div>
 
                                     <div class="text-center pt-1 mb-4 pb-1">
                                         <!-- <button class="btn btn-primary btn-lg gradient-custom-2 mb-3" type="button">Sign Up</button> -->
-                                        <a href="/mfa"><button type="button" class="btn btn-primary btn-lg w-100">Sign Up</button></a>
+                                        <a href="/mfa"><button type="submit" class="btn btn-primary btn-lg w-100">Sign Up</button></a>
                                         <!-- <a class="text-muted" href="#!">Forgot password?</a> -->
                                     </div>
 
@@ -49,6 +66,35 @@
                                     </div>
 
                                 </form>
+                                </ng-container>
+                                <ng-container *ngIf="isConfirm">
+                                    <div class="text-left">
+                                        <!-- <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp" style="width: 185px;" alt="logo"> -->
+                                        <h4 class="mt-1">Two Step Verification</h4>
+                                        <p class="text-muted mb-4">Enter the verification code we sent to</p>
+                                    </div>
+    
+                                    <form [formGroup]="registerForm" (ngSubmit)="confirmSignUp()">
+                                        <div class="form-outline mb-4">
+                                            <label class="form-label" for="form2Example44">Type your 6 digit security code</label>
+                                            <input type="number" id="code" placeholder="987651" class="form-control" formControlName="code" />
+    
+                                        </div>
+    
+    
+                                        <div class="text-center pt-1 mb-4 pb-1">
+                                            <!-- <button class="btn btn-primary btn-lg gradient-custom-2 mb-3" type="button">Sign Up</button> -->
+                                            <a href="/login"> <button type="button" class="btn btn-primary btn-lg w-100">Submit</button></a>
+                                            <!-- <a class="text-muted" href="#!">Forgot password?</a> -->
+                                        </div>
+                                        <div class="d-flex align-items-center justify-content-center pb-4">
+                                            <p class="mb-0 me-2 color-gray">Didn’t get the code ? </p>
+                                            <a href="/signup" class="color-primary">Resend</a>
+                                            <!-- <button type="button" class="btn btn-outline-danger">Login</button> -->
+                                        </div>
+    
+                                    </form>
+                                </ng-container>
 
                             </div>
                         </div>
