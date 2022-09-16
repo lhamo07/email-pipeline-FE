@@ -13,7 +13,7 @@
     >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="navbar-collapse collapse" id="navbarSupportedContent">
+    <div class="navbar-collapse collapse" id="navbarSupportedContent" style="">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#!">Dashboard</a>
@@ -165,7 +165,7 @@
                 : activate to sort column ascending"
                   style="width: 63.2px"
                 >
-                  Which Bounce?
+                  SESSenderAddress
                 </th>
                 <th
                   class="th-sm sorting"
@@ -189,7 +189,7 @@
                 : activate to sort column ascending"
                   style="width: 92.2px"
                 >
-                  BDate
+                  SourceIP
                 </th>
                 <th
                   class="th-sm sorting"
@@ -201,20 +201,7 @@
                                 : activate to sort column ascending"
                   style="width: 64.2px"
                 >
-                  sourceIP
-                </th>
-
-                <th
-                  class="th-sm sorting"
-                  tabindex="0"
-                  aria-controls="dtBasicExample"
-                  rowspan="1"
-                  colspan="1"
-                  aria-label="Salary
-                                : activate to sort column ascending"
-                  style="width: 64.2px"
-                >
-                  bounceSubType
+                  Time
                 </th>
                 <th
                   class="th-sm sorting"
@@ -223,7 +210,7 @@
                   rowspan="1"
                   colspan="1"
                   aria-label="Salary
-                                : activate to sort column ascending"
+                              : activate to sort column ascending"
                   style="width: 64.2px"
                 >
                   SESMessageType
@@ -235,7 +222,7 @@
                   rowspan="1"
                   colspan="1"
                   aria-label="Salary
-                                : activate to sort column ascending"
+                            : activate to sort column ascending"
                   style="width: 64.2px"
                 >
                   SESMessageId
@@ -247,108 +234,106 @@
                   rowspan="1"
                   colspan="1"
                   aria-label="Salary
-                                : activate to sort column ascending"
+                          : activate to sort column ascending"
                   style="width: 64.2px"
                 >
-                  bounceType
+                  Subject
                 </th>
               </tr>
             </thead>
             <tbody>
-              <tr role="row" class="odd" *ngFor="let bounce of bounceData">
-                <td class="sorting_1">{{ bounce.SMTPresponse }}</td>
-                <td>{{ bounce.SnsPublishTime }}</td>
-                <td>{{ bounce.SESSenderAddress }}</td>
-                <td>{{ bounce["Which Bounce?"] }}</td>
-                <td>{{ bounce.SESDestinationAddress }}</td>
-                <td>{{ bounce.BDate }}</td>
-                <td>{{ bounce.sourceIP }}</td>
-                <td>{{ bounce.bounceSubType }}</td>
-                <td>{{ bounce.SESMessageType }}</td>
-                <td>{{ bounce.SESMessageId }}</td>
-                <td>{{ bounce.SESMessageId }}</td>
+              <tr role="row" class="odd" *ngFor="let delivery of deliveryData">
+                <td class="sorting_1">{{ delivery.SMTPresponse }}</td>
+                <td>{{ delivery.SnsPublishTime }}</td>
+                <td>{{ delivery.SESSenderAddress }}</td>
+                <td>{{ delivery.SESDestinationAddress }}</td>
+                <td>{{ delivery.SourceIP }}</td>
+                <td>{{ delivery.Time }}</td>
+                <td>{{ delivery.SESMessageType }}</td>
+                <td>{{ delivery.SESMessageId }}</td>
+                <td>{{ delivery.Subject }}</td>
               </tr>
               <!-- <tr role="row" class="even">
-                                <td class="sorting_1">07/09/2022</td>
-                                <td>john@gmail.com</td>
-                                <td>General</td>
-                                <td>Lorem Ipsum</td>
-                                <td>Permanent</td>
-                                <td>Permanent</td>
-                                <td>Lorem</td>
-                            </tr>
-                            <tr role="row" class="odd">
-                                <td class="sorting_1">07/09/2022</td>
-                                <td>john@gmail.com</td>
-                                <td>General</td>
-                                <td>Lorem Ipsum</td>
-                                <td>Permanent</td>
-                                <td>Permanent</td>
-                                <td>Lorem</td>
-                            </tr>
-                            <tr role="row" class="even">
-                                <td class="sorting_1">07/09/2022</td>
-                                <td>john@gmail.com</td>
-                                <td>General</td>
-                                <td>Lorem Ipsum</td>
-                                <td>Permanent</td>
-                                <td>Permanent</td>
-                                <td>Lorem</td>
-                            </tr>
-                            <tr role="row" class="odd">
-                                <td class="sorting_1">07/09/2022</td>
-                                <td>john@gmail.com</td>
-                                <td>General</td>
-                                <td>Lorem Ipsum</td>
-                                <td>Permanent</td>
-                                <td>Permanent</td>
-                                <td>Lorem</td>
-                            </tr>
-                            <tr role="row" class="even">
-                                <td class="sorting_1">07/09/2022</td>
-                                <td>john@gmail.com</td>
-                                <td>General</td>
-                                <td>Lorem Ipsum</td>
-                                <td>Permanent</td>
-                                <td>Permanent</td>
-                                <td>Lorem</td>
-                            </tr>
-                            <tr role="row" class="odd">
-                                <td class="sorting_1">07/09/2022</td>
-                                <td>john@gmail.com</td>
-                                <td>General</td>
-                                <td>Lorem Ipsum</td>
-                                <td>Permanent</td>
-                                <td>Permanent</td>
-                                <td>Lorem</td>
-                            </tr>
-                            <tr role="row" class="even">
-                                <td class="sorting_1">07/09/2022</td>
-                                <td>john@gmail.com</td>
-                                <td>General</td>
-                                <td>Lorem Ipsum</td>
-                                <td>Permanent</td>
-                                <td>Permanent</td>
-                                <td>Lorem</td>
-                            </tr>
-                            <tr role="row" class="odd">
-                                <td class="sorting_1">07/09/2022</td>
-                                <td>john@gmail.com</td>
-                                <td>General</td>
-                                <td>Lorem Ipsum</td>
-                                <td>Permanent</td>
-                                <td>Permanent</td>
-                                <td>Lorem</td>
-                            </tr>
-                            <tr role="row" class="even">
-                                <td class="sorting_1">07/09/2022</td>
-                                <td>john@gmail.com</td>
-                                <td>General</td>
-                                <td>Lorem Ipsum</td>
-                                <td>Permanent</td>s
-                                <td>Permanent</td>
-                                <td>Lorem</td>
-                            </tr> -->
+                <td class="sorting_1">07/09/2022</td>
+                <td>john@gmail.com</td>
+                <td>General</td>
+                <td>Lorem Ipsum</td>
+                <td>Permanent</td>
+                <td>Permanent</td>
+                <td>Lorem</td>
+              </tr>
+              <tr role="row" class="odd">
+                <td class="sorting_1">07/09/2022</td>
+                <td>john@gmail.com</td>
+                <td>General</td>
+                <td>Lorem Ipsum</td>
+                <td>Permanent</td>
+                <td>Permanent</td>
+                <td>Lorem</td>
+              </tr>
+              <tr role="row" class="even">
+                <td class="sorting_1">07/09/2022</td>
+                <td>john@gmail.com</td>
+                <td>General</td>
+                <td>Lorem Ipsum</td>
+                <td>Permanent</td>
+                <td>Permanent</td>
+                <td>Lorem</td>
+              </tr>
+              <tr role="row" class="odd">
+                <td class="sorting_1">07/09/2022</td>
+                <td>john@gmail.com</td>
+                <td>General</td>
+                <td>Lorem Ipsum</td>
+                <td>Permanent</td>
+                <td>Permanent</td>
+                <td>Lorem</td>
+              </tr>
+              <tr role="row" class="even">
+                <td class="sorting_1">07/09/2022</td>
+                <td>john@gmail.com</td>
+                <td>General</td>
+                <td>Lorem Ipsum</td>
+                <td>Permanent</td>
+                <td>Permanent</td>
+                <td>Lorem</td>
+              </tr>
+              <tr role="row" class="odd">
+                <td class="sorting_1">07/09/2022</td>
+                <td>john@gmail.com</td>
+                <td>General</td>
+                <td>Lorem Ipsum</td>
+                <td>Permanent</td>
+                <td>Permanent</td>
+                <td>Lorem</td>
+              </tr>
+              <tr role="row" class="even">
+                <td class="sorting_1">07/09/2022</td>
+                <td>john@gmail.com</td>
+                <td>General</td>
+                <td>Lorem Ipsum</td>
+                <td>Permanent</td>
+                <td>Permanent</td>
+                <td>Lorem</td>
+              </tr>
+              <tr role="row" class="odd">
+                <td class="sorting_1">07/09/2022</td>
+                <td>john@gmail.com</td>
+                <td>General</td>
+                <td>Lorem Ipsum</td>
+                <td>Permanent</td>
+                <td>Permanent</td>
+                <td>Lorem</td>
+              </tr>
+              <tr role="row" class="even">
+                <td class="sorting_1">07/09/2022</td>
+                <td>john@gmail.com</td>
+                <td>General</td>
+                <td>Lorem Ipsum</td>
+                <td>Permanent</td>
+                <td>Permanent</td>
+                <td>Lorem</td>
+              </tr> -->
             </tbody>
           </table>
         </div>
