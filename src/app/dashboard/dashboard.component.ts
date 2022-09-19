@@ -28,6 +28,7 @@ export class DashboardComponent implements OnInit {
   getSMTPDeliveryNotification() {
     this.apiService.SMTPDeliveryNotifications().subscribe((res) => {
       this.deliveryData = res.delivered;
+      console.log(this.deliveryData);
     });
   }
   gotoPreviousPage() {
@@ -46,6 +47,9 @@ export class DashboardComponent implements OnInit {
 
     this.pageNumber++;
     this.checkPagination();
+    if (this.pageNumber == this.endPage) {
+      console.log('no data');
+    }
   }
   checkPagination() {
     if (this.startPage >= 0 && this.endPage < this.postCount) {
@@ -62,5 +66,17 @@ export class DashboardComponent implements OnInit {
       console.log('signout successfully');
       this.router.navigate(['/login']);
     });
+  }
+  selectChangeHandler(value: any) {
+    if (value == 'delivery') {
+      this.apiService.SMTPDeliveryNotifications().subscribe((res) => {
+        this.deliveryData = res.delivered;
+        console.log(this.deliveryData);
+      });
+    } else if (value == 'complaint') {
+      console.log('complaint');
+    } else {
+      console.log('bounce');
+    }
   }
 }
