@@ -13,6 +13,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { IconsModule } from './icons/icons.module';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 
@@ -34,6 +37,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     ToastrModule.forRoot(),
     IconsModule,
     HttpClientModule,
+    FormsModule,
+    Ng2SearchPipeModule,
+    NgxPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
