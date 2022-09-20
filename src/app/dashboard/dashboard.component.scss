@@ -1,3 +1,12 @@
-.myclass{
-    display: none;
+input.js-site-nav-inline-search-input.site-nav-inline-search-input {
+    border-radius: 8px;
+    outline: none;
+    background-color: #f3f3f4;
+    border: none;
+    padding: 10px 16px;
+}
+
+.site-nav-inline-search .site-nav-inline-search-input {
+    // max-width: 124px;
+    padding-left: 38px;
 }

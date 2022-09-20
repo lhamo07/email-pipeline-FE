@@ -55,3 +55,23 @@ label.form-label.fw-lighter.fs-sm.pass {
 }
 
 // login::end
+//begin::Dashboard
+.myclass {
+    display: none;
+}
+
+svg.bi.bi-search {
+    position: absolute;
+    /* bottom: 27px; */
+    top: 189px;
+    transform: translate(11px, -50%);
+    color: #9e9ea7;
+}
+
+select.select-table {
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    outline: none;
+}
+
+//end::Dashboard

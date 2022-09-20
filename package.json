@@ -21,6 +21,7 @@
     "angular-feather": "^6.5.0",
     "aws-amplify": "^4.3.35",
     "bootstrap": "^5.2.1",
+    "bootstrap-icons": "^1.9.1",
     "jquery": "^3.6.1",
     "ngx-toastr": "^15.0.0",
     "rxjs": "~7.5.0",

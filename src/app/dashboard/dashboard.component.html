@@ -1,26 +1,17 @@
 <!-- begin::nav -->
 <nav class="navbar navbar-expand-lg border-bottom bg-white">
-  <div class="container">
-    <a class="navbar-brand fw-bolder color-primary" href="#!">Logo</a>
-    <button
-      class="navbar-toggler collapsed"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+    <div class="container">
+        <a class="navbar-brand fw-bolder color-primary" href="#!">Logo</a>
+        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="navbar-collapse collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#!">Dashboard</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/login" (click)="signOut()"
-            ><svg
+        <div class="navbar-collapse collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#!">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login" (click)="signOut()"><svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
               height="16"
@@ -37,438 +28,303 @@
                 d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"
               /></svg
           ></a>
-        </li>
-      </ul>
+                </li>
+            </ul>
+        </div>
     </div>
-  </div>
 </nav>
 <!-- end::nav -->
 
 <!-- begin::Table -->
-<div class="container mt-5 pb-5">
-  <div id="dtBasicExample_wrapper" class="dataTables_wrapper dt-bootstrap4">
-    <div class="row pb-4">
-      <div class="col-sm-12 col-md-6">
-        <h4>Email Pipeline Dashboard</h4>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <div id="dtBasicExample_filter" class="dataTables_filter">
-          <!-- <div class="dropdown">
-            <button
-              class="btn btn-secondary dropdown-toggle"
-              type="button"
-              id="dropdownMenuButton"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              Choose Table by Table name
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="#">SMTPBounceNotification</a>
-              <a class="dropdown-item" href="#">SMTPComplaintNotifications</a>
-              <a class="dropdown-item" href="#">SMTPDeliveryNotifications</a>
+<div class="container mt-5 pb-5" style="height: 550px">
+    <div id="dtBasicExample_wrapper" class="dataTables_wrapper dt-bootstrap4">
+        <div class="row pb-4">
+            <div class="col-sm-12 col-md-6">
+                <h4>Email Pipeline Dashboard</h4>
             </div>
-          </div> -->
-          <select #data (change)="selectChangeHandler(data.value)">
-            <option disable>slect table</option>
+            <div class="col-sm-12 col-md-6">
+                <div id="dtBasicExample_filter" class="dataTables_filter">
 
-            <option value="bounce">bounce</option>
-            <option value="complaint">complaint</option>
-            <option value="delivery">delivery</option>
+                    <select name="table" #data (change)="selectChangeHandler(data.value)" class="select-table">
+            <option disable>Select table</option>
+
+            <option value="bounce">Bounce</option>
+            <option value="complaint">Complaint</option>
+            <option value="delivery">Delivery</option>
           </select>
+
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="row pb-3">
-      <div class="col-sm-12 col-md-6">
-        <div class="dataTables_length bs-select" id="dtBasicExample_length">
-          <label
-            >Show
-            <select
-              name="dtBasicExample_length"
-              aria-controls="dtBasicExample"
-              class="custom-select custom-select-sm form-control form-control-sm"
-            >
-              <option value="10">10</option>
-              <option value="25">25</option>
-              <option value="50">50</option>
-              <option value="100">100</option>
-            </select>
-            entries</label
-          >
+
+        <div class="row">
+            <div class="col-sm-6 pb-3">
+                <!-- <div class="dataTables_length" style="width: 50% !important;" id="example_length"><input type="search" placeholder="Search.." aria-controls="example" class="form-control input-sm"></div> -->
+                <form class="site-nav-inline-search js-site-nav-global-search" action="/search" data-site-nav-element="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                  </svg>
+
+                    <input class="js-site-nav-inline-search-input site-nav-inline-search-input" style="width: 50% !important;" type="search" name="q" placeholder="Search" autocomplete="off" value="">
+
+                </form>
+            </div>
+            <div class="col-sm-6 pb-3">
+                <div id="example_filter" class="dataTables_filter"><label>Select Date:<input type="text" name="daterange" class="form-control input-sm" placeholder="01/01/2018 - 01/01/2022" aria-controls="example"></label></div>
+            </div>
         </div>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <div id="dtBasicExample_filter" class="dataTables_filter">
-          <label
-            >Select Date:<input
-              type="text"
-              name="dates"
-              class="form-control pull-right"
-              placeholder="09/16/2022 - 09/18/2022"
-          /></label>
-        </div>
-      </div>
-    </div>
-    <div style="overflow-x: auto">
-      <div class="row">
-        <div class="col-sm-12">
-          <table
-            class="table table-striped table-bordered table-sm dataTable"
-            cellspacing="0"
-            width="100%"
-            role="grid"
-            aria-describedby="dtBasicExample_info"
-            style="width: 100%"
-          >
-            <thead>
-              <tr role="row">
-                <th
-                  class="th-sm sorting_asc"
-                  tabindex="0"
-                  aria-controls="dtBasicExample"
-                  rowspan="1"
-                  colspan="1"
-                  aria-sort="ascending"
-                  aria-label="Name
-                : activate to sort column descending"
-                  style="width: 64.2px"
-                >
-                  SMTPresponse
-                </th>
-                <th
-                  class="th-sm sorting"
-                  tabindex="0"
-                  aria-controls="dtBasicExample"
-                  rowspan="1"
-                  colspan="1"
-                  aria-label="Position
-                : activate to sort column ascending"
-                  style="width: 159.2px"
-                >
-                  SnsPublishTime
-                </th>
-                <th
-                  class="th-sm sorting"
-                  tabindex="0"
-                  aria-controls="dtBasicExample"
-                  rowspan="1"
-                  colspan="1"
-                  aria-label="Office
-                : activate to sort column ascending"
-                  style="width: 67.2px"
-                >
-                  SESSenderAddress
-                </th>
-                <th
-                  class="th-sm sorting"
-                  tabindex="0"
-                  aria-controls="dtBasicExample"
-                  rowspan="1"
-                  colspan="1"
-                  aria-label="Age
-                : activate to sort column ascending"
-                  style="width: 63.2px"
-                >
-                  SESSenderAddress
-                </th>
-                <th
-                  class="th-sm sorting"
-                  tabindex="0"
-                  aria-controls="dtBasicExample"
-                  rowspan="1"
-                  colspan="1"
-                  aria-label="Start date
-                : activate to sort column ascending"
-                  style="width: 66.2px"
-                >
-                  SESDestinationAddress
-                </th>
-                <th
-                  class="th-sm sorting"
-                  tabindex="0"
-                  aria-controls="dtBasicExample"
-                  rowspan="1"
-                  colspan="1"
-                  aria-label="Salary
-                : activate to sort column ascending"
-                  style="width: 92.2px"
-                >
-                  SourceIP
-                </th>
-                <th
-                  class="th-sm sorting"
-                  tabindex="0"
-                  aria-controls="dtBasicExample"
-                  rowspan="1"
-                  colspan="1"
-                  aria-label="Salary
-                                : activate to sort column ascending"
-                  style="width: 64.2px"
-                >
-                  Time
-                </th>
-                <th
-                  class="th-sm sorting"
-                  tabindex="0"
-                  aria-controls="dtBasicExample"
-                  rowspan="1"
-                  colspan="1"
-                  aria-label="Salary
-                              : activate to sort column ascending"
-                  style="width: 64.2px"
-                >
-                  SESMessageType
-                </th>
-                <th
-                  class="th-sm sorting"
-                  tabindex="0"
-                  aria-controls="dtBasicExample"
-                  rowspan="1"
-                  colspan="1"
-                  aria-label="Salary
-                            : activate to sort column ascending"
-                  style="width: 64.2px"
-                >
-                  SESMessageId
-                </th>
-                <th
-                  class="th-sm sorting"
-                  tabindex="0"
-                  aria-controls="dtBasicExample"
-                  rowspan="1"
-                  colspan="1"
-                  aria-label="Salary
-                          : activate to sort column ascending"
-                  style="width: 64.2px"
-                >
-                  Subject
-                </th>
-              </tr>
-            </thead>
-            <ng-container *ngIf="data.value == 'delivery'">
-              <tbody>
-                <tr role="row" class="odd" *ngFor="let delivery of filterdPost">
-                  <td class="sorting_1">{{ delivery.SMTPresponse }}</td>
-                  <td>{{ delivery.SnsPublishTime }}</td>
-                  <td>{{ delivery.SESSenderAddress }}</td>
-                  <td>{{ delivery.SESDestinationAddress }}</td>
-                  <td>{{ delivery.SourceIP }}</td>
-                  <td>{{ delivery.Time }}</td>
-                  <td>{{ delivery.SESMessageType }}</td>
-                  <td>{{ delivery.SESMessageId }}</td>
-                  <td>{{ delivery.Subject }}</td>
-                </tr>
-              </tbody>
-            </ng-container>
-          </table>
-        </div>
-        <ng-container *ngIf="data.value == 'complaint'">
-          <div class="col-sm-12">
-            <tbody>
-              <tr role="row" class="even">
-                <td class="sorting_1">07/09/2022</td>
-                <td>tenzin@gmail.com</td>
-                <td>General</td>
-                <td>Lorem Ipsum</td>
-                <td>Permanent</td>
-                <td>Permanent</td>
-                <td>Lorem</td>
-              </tr>
-              <tr role="row" class="odd">
-                <td class="sorting_1">07/09/2022</td>
-                <td>tenzin@gmail.com</td>
-                <td>General</td>
-                <td>Lorem Ipsum</td>
-                <td>Permanent</td>
-                <td>Permanent</td>
-                <td>Lorem</td>
-              </tr>
-              <tr role="row" class="even">
-                <td class="sorting_1">07/09/2022</td>
-                <td>tenzin@gmail.com</td>
-                <td>General</td>
-                <td>Lorem Ipsum</td>
-                <td>Permanent</td>
-                <td>Permanent</td>
-                <td>Lorem</td>
-              </tr>
-              <tr role="row" class="odd">
-                <td class="sorting_1">07/09/2022</td>
-                <td>tenzin@gmail.com</td>
-                <td>General</td>
-                <td>Lorem Ipsum</td>
-                <td>Permanent</td>
-                <td>Permanent</td>
-                <td>Lorem</td>
-              </tr>
-              <tr role="row" class="even">
-                <td class="sorting_1">07/09/2022</td>
-                <td>tenzin@gmail.com</td>
-                <td>General</td>
-                <td>Lorem Ipsum</td>
-                <td>Permanent</td>
-                <td>Permanent</td>
-                <td>Lorem</td>
-              </tr>
-              <tr role="row" class="odd">
-                <td class="sorting_1">07/09/2022</td>
-                <td>tenzin@gmail.com</td>
-                <td>General</td>
-                <td>Lorem Ipsum</td>
-                <td>Permanent</td>
-                <td>Permanent</td>
-                <td>Lorem</td>
-              </tr>
-              <tr role="row" class="even">
-                <td class="sorting_1">07/09/2022</td>
-                <td>tenzin@gmail.com</td>
-                <td>General</td>
-                <td>Lorem Ipsum</td>
-                <td>Permanent</td>
-                <td>Permanent</td>
-                <td>Lorem</td>
-              </tr>
-              <tr role="row" class="odd">
-                <td class="sorting_1">07/09/2022</td>
-                <td>tenzin@gmail.com</td>
-                <td>General</td>
-                <td>Lorem Ipsum</td>
-                <td>Permanent</td>
-                <td>Permanent</td>
-                <td>Lorem</td>
-              </tr>
-              <tr role="row" class="even">
-                <td class="sorting_1">07/09/2022</td>
-                <td>tenzin@gmail.com</td>
-                <td>General</td>
-                <td>Lorem Ipsum</td>
-                <td>Permanent</td>
-                <td>Permanent</td>
-                <td>Lorem</td>
-              </tr>
-            </tbody>
-          </div>
-        </ng-container>
-        <!-- bounce table -->
-        <ng-container *ngIf="data.value == 'bounce'">
-          <div class="col-sm-12">
-            <tbody>
-              <tr role="row" class="even">
-                <td class="sorting_1">07/09/2022</td>
-                <td>john@gmail.com</td>
-                <td>General</td>
-                <td>Lorem Ipsum</td>
-                <td>Permanent</td>
-                <td>Permanent</td>
-                <td>Lorem</td>
-              </tr>
-              <tr role="row" class="odd">
-                <td class="sorting_1">07/09/2022</td>
-                <td>john@gmail.com</td>
-                <td>General</td>
-                <td>Lorem Ipsum</td>
-                <td>Permanent</td>
-                <td>Permanent</td>
-                <td>Lorem</td>
-              </tr>
-              <tr role="row" class="even">
-                <td class="sorting_1">07/09/2022</td>
-                <td>john@gmail.com</td>
-                <td>General</td>
-                <td>Lorem Ipsum</td>
-                <td>Permanent</td>
-                <td>Permanent</td>
-                <td>Lorem</td>
-              </tr>
-              <tr role="row" class="odd">
-                <td class="sorting_1">07/09/2022</td>
-                <td>john@gmail.com</td>
-                <td>General</td>
-                <td>Lorem Ipsum</td>
-                <td>Permanent</td>
-                <td>Permanent</td>
-                <td>Lorem</td>
-              </tr>
-              <tr role="row" class="even">
-                <td class="sorting_1">07/09/2022</td>
-                <td>john@gmail.com</td>
-                <td>General</td>
-                <td>Lorem Ipsum</td>
-                <td>Permanent</td>
-                <td>Permanent</td>
-                <td>Lorem</td>
-              </tr>
-              <tr role="row" class="odd">
-                <td class="sorting_1">07/09/2022</td>
-                <td>john@gmail.com</td>
-                <td>General</td>
-                <td>Lorem Ipsum</td>
-                <td>Permanent</td>
-                <td>Permanent</td>
-                <td>Lorem</td>
-              </tr>
-              <tr role="row" class="even">
-                <td class="sorting_1">07/09/2022</td>
-                <td>john@gmail.com</td>
-                <td>General</td>
-                <td>Lorem Ipsum</td>
-                <td>Permanent</td>
-                <td>Permanent</td>
-                <td>Lorem</td>
-              </tr>
-              <tr role="row" class="odd">
-                <td class="sorting_1">07/09/2022</td>
-                <td>john@gmail.com</td>
-                <td>General</td>
-                <td>Lorem Ipsum</td>
-                <td>Permanent</td>
-                <td>Permanent</td>
-                <td>Lorem</td>
-              </tr>
-              <tr role="row" class="even">
-                <td class="sorting_1">07/09/2022</td>
-                <td>john@gmail.com</td>
-                <td>General</td>
-                <td>Lorem Ipsum</td>
-                <td>Permanent</td>
-                <td>Permanent</td>
-                <td>Lorem</td>
-              </tr>
-            </tbody>
-          </div>
-        </ng-container>
-      </div>
-      <div class="row mt-3">
-        <div class="col-sm-12 col-md-5">
-          <div
-            class="dataTables_info"
-            id="dtBasicExample_info"
-            role="status"
-            aria-live="polite"
-          >
-            Showing {{ startPage }} to {{ endPage }} of 57 entries
-          </div>
-        </div>
-        <div class="col-sm-12 col-md-7">
-          <div
-            class="dataTables_paginate paging_simple_numbers"
-            id="dtBasicExample_paginate"
-          >
-            <ul class="pagination">
-              <li
-                class="paginate_button page-item Previous"
-                id="dtBasicExample_previous"
-              >
-                <a
-                  aria-controls="dtBasicExample"
-                  data-dt-idx="0"
-                  tabindex="0"
-                  class="page-link"
-                  style="cursor: pointer"
-                  (click)="gotoPreviousPage()"
-                  >Previous</a
+        <div style="overflow-x: auto">
+            <div class="row">
+                <div class="col-sm-12">
+                    <table class="table table-striped table-bordered table-sm dataTable" cellspacing="0" width="100%" role="grid" aria-describedby="dtBasicExample_info" style="width: 100%">
+                        <thead>
+                            <tr role="row">
+                                <th class="th-sm sorting_asc" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name
+                : activate to sort column descending" style="width: 64.2px">
+                                    SMTPresponse
+                                </th>
+                                <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Position
+                : activate to sort column ascending" style="width: 159.2px">
+                                    SnsPublishTime
+                                </th>
+                                <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Office
+                : activate to sort column ascending" style="width: 67.2px">
+                                    SESSenderAddress
+                                </th>
+                                <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Age
+                : activate to sort column ascending" style="width: 63.2px">
+                                    SESSenderAddress
+                                </th>
+                                <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Start date
+                : activate to sort column ascending" style="width: 66.2px">
+                                    SESDestinationAddress
+                                </th>
+                                <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Salary
+                : activate to sort column ascending" style="width: 92.2px">
+                                    SourceIP
+                                </th>
+                                <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Salary
+                                : activate to sort column ascending" style="width: 64.2px">
+                                    Time
+                                </th>
+                                <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Salary
+                              : activate to sort column ascending" style="width: 64.2px">
+                                    SESMessageType
+                                </th>
+                                <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Salary
+                            : activate to sort column ascending" style="width: 64.2px">
+                                    SESMessageId
+                                </th>
+                                <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Salary
+                          : activate to sort column ascending" style="width: 64.2px">
+                                    Subject
+                                </th>
+                            </tr>
+                        </thead>
+                        <ng-container *ngIf="data.value == 'delivery'">
+                            <tbody>
+                                <tr role="row" class="odd" *ngFor="let delivery of filterdPost">
+                                    <td class="sorting_1">{{ delivery.SMTPresponse }}</td>
+                                    <td>{{ delivery.SnsPublishTime }}</td>
+                                    <td>{{ delivery.SESSenderAddress }}</td>
+                                    <td>{{ delivery.SESDestinationAddress }}</td>
+                                    <td>{{ delivery.SourceIP }}</td>
+                                    <td>{{ delivery.Time }}</td>
+                                    <td>{{ delivery.SESMessageType }}</td>
+                                    <td>{{ delivery.SESMessageId }}</td>
+                                    <td>{{ delivery.Subject }}</td>
+                                </tr>
+                            </tbody>
+                        </ng-container>
+                    </table>
+                </div>
+                <ng-container *ngIf="data.value == 'complaint'">
+                    <div class="col-sm-12">
+                        <tbody>
+                            <tr role="row" class="even">
+                                <td class="sorting_1">07/09/2022</td>
+                                <td>tenzin@gmail.com</td>
+                                <td>General</td>
+                                <td>Lorem Ipsum</td>
+                                <td>Permanent</td>
+                                <td>Permanent</td>
+                                <td>Lorem</td>
+                            </tr>
+                            <tr role="row" class="odd">
+                                <td class="sorting_1">07/09/2022</td>
+                                <td>tenzin@gmail.com</td>
+                                <td>General</td>
+                                <td>Lorem Ipsum</td>
+                                <td>Permanent</td>
+                                <td>Permanent</td>
+                                <td>Lorem</td>
+                            </tr>
+                            <tr role="row" class="even">
+                                <td class="sorting_1">07/09/2022</td>
+                                <td>tenzin@gmail.com</td>
+                                <td>General</td>
+                                <td>Lorem Ipsum</td>
+                                <td>Permanent</td>
+                                <td>Permanent</td>
+                                <td>Lorem</td>
+                            </tr>
+                            <tr role="row" class="odd">
+                                <td class="sorting_1">07/09/2022</td>
+                                <td>tenzin@gmail.com</td>
+                                <td>General</td>
+                                <td>Lorem Ipsum</td>
+                                <td>Permanent</td>
+                                <td>Permanent</td>
+                                <td>Lorem</td>
+                            </tr>
+                            <tr role="row" class="even">
+                                <td class="sorting_1">07/09/2022</td>
+                                <td>tenzin@gmail.com</td>
+                                <td>General</td>
+                                <td>Lorem Ipsum</td>
+                                <td>Permanent</td>
+                                <td>Permanent</td>
+                                <td>Lorem</td>
+                            </tr>
+                            <tr role="row" class="odd">
+                                <td class="sorting_1">07/09/2022</td>
+                                <td>tenzin@gmail.com</td>
+                                <td>General</td>
+                                <td>Lorem Ipsum</td>
+                                <td>Permanent</td>
+                                <td>Permanent</td>
+                                <td>Lorem</td>
+                            </tr>
+                            <tr role="row" class="even">
+                                <td class="sorting_1">07/09/2022</td>
+                                <td>tenzin@gmail.com</td>
+                                <td>General</td>
+                                <td>Lorem Ipsum</td>
+                                <td>Permanent</td>
+                                <td>Permanent</td>
+                                <td>Lorem</td>
+                            </tr>
+                            <tr role="row" class="odd">
+                                <td class="sorting_1">07/09/2022</td>
+                                <td>tenzin@gmail.com</td>
+                                <td>General</td>
+                                <td>Lorem Ipsum</td>
+                                <td>Permanent</td>
+                                <td>Permanent</td>
+                                <td>Lorem</td>
+                            </tr>
+                            <tr role="row" class="even">
+                                <td class="sorting_1">07/09/2022</td>
+                                <td>tenzin@gmail.com</td>
+                                <td>General</td>
+                                <td>Lorem Ipsum</td>
+                                <td>Permanent</td>
+                                <td>Permanent</td>
+                                <td>Lorem</td>
+                            </tr>
+                        </tbody>
+                    </div>
+                </ng-container>
+                <!-- bounce table -->
+                <ng-container *ngIf="data.value == 'bounce'">
+                    <div class="col-sm-12">
+                        <tbody>
+                            <tr role="row" class="even">
+                                <td class="sorting_1">07/09/2022</td>
+                                <td>john@gmail.com</td>
+                                <td>General</td>
+                                <td>Lorem Ipsum</td>
+                                <td>Permanent</td>
+                                <td>Permanent</td>
+                                <td>Lorem</td>
+                            </tr>
+                            <tr role="row" class="odd">
+                                <td class="sorting_1">07/09/2022</td>
+                                <td>john@gmail.com</td>
+                                <td>General</td>
+                                <td>Lorem Ipsum</td>
+                                <td>Permanent</td>
+                                <td>Permanent</td>
+                                <td>Lorem</td>
+                            </tr>
+                            <tr role="row" class="even">
+                                <td class="sorting_1">07/09/2022</td>
+                                <td>john@gmail.com</td>
+                                <td>General</td>
+                                <td>Lorem Ipsum</td>
+                                <td>Permanent</td>
+                                <td>Permanent</td>
+                                <td>Lorem</td>
+                            </tr>
+                            <tr role="row" class="odd">
+                                <td class="sorting_1">07/09/2022</td>
+                                <td>john@gmail.com</td>
+                                <td>General</td>
+                                <td>Lorem Ipsum</td>
+                                <td>Permanent</td>
+                                <td>Permanent</td>
+                                <td>Lorem</td>
+                            </tr>
+                            <tr role="row" class="even">
+                                <td class="sorting_1">07/09/2022</td>
+                                <td>john@gmail.com</td>
+                                <td>General</td>
+                                <td>Lorem Ipsum</td>
+                                <td>Permanent</td>
+                                <td>Permanent</td>
+                                <td>Lorem</td>
+                            </tr>
+                            <tr role="row" class="odd">
+                                <td class="sorting_1">07/09/2022</td>
+                                <td>john@gmail.com</td>
+                                <td>General</td>
+                                <td>Lorem Ipsum</td>
+                                <td>Permanent</td>
+                                <td>Permanent</td>
+                                <td>Lorem</td>
+                            </tr>
+                            <tr role="row" class="even">
+                                <td class="sorting_1">07/09/2022</td>
+                                <td>john@gmail.com</td>
+                                <td>General</td>
+                                <td>Lorem Ipsum</td>
+                                <td>Permanent</td>
+                                <td>Permanent</td>
+                                <td>Lorem</td>
+                            </tr>
+                            <tr role="row" class="odd">
+                                <td class="sorting_1">07/09/2022</td>
+                                <td>john@gmail.com</td>
+                                <td>General</td>
+                                <td>Lorem Ipsum</td>
+                                <td>Permanent</td>
+                                <td>Permanent</td>
+                                <td>Lorem</td>
+                            </tr>
+                            <tr role="row" class="even">
+                                <td class="sorting_1">07/09/2022</td>
+                                <td>john@gmail.com</td>
+                                <td>General</td>
+                                <td>Lorem Ipsum</td>
+                                <td>Permanent</td>
+                                <td>Permanent</td>
+                                <td>Lorem</td>
+                            </tr>
+                        </tbody>
+                    </div>
+                </ng-container>
+            </div>
+            <div class="row mt-3">
+                <div class="col-sm-12 col-md-5">
+                    <div class="dataTables_info" id="dtBasicExample_info" role="status" aria-live="polite">
+                        Showing {{ startPage }} to {{ endPage }} of 57 entries
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-7">
+                    <div class="dataTables_paginate paging_simple_numbers" id="dtBasicExample_paginate">
+                        <ul class="pagination">
+                            <li class="paginate_button page-item Previous" id="dtBasicExample_previous">
+                                <a aria-controls="dtBasicExample" data-dt-idx="0" tabindex="0" class="page-link" style="cursor: pointer" (click)="gotoPreviousPage()">Previous</a
                 >
               </li>
               <li class="paginate_button page-item active">
