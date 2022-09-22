@@ -7,6 +7,9 @@
     border: none !important;
 }
 
+// .btn-outline-primary{
+//     border: 1px solid $primary;
+// }
 .btn-primary:hover {
     background-color: $primary-bg-light !important;
 }
@@ -74,4 +77,10 @@ select.select-table {
     outline: none;
 }
 
+// calendar::datepicker::begin
+bs-daterangepicker-container.bottom.ng-tns-c75-0.ng-star-inserted {
+    left: 90px !important;
+}
+
+// calender::datepicker::end
 //end::Dashboard

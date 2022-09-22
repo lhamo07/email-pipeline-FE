@@ -5,6 +5,7 @@ import { MfaComponent } from './Auth/mfa/mfa.component';
 import { NewPasswordComponent } from './Auth/new-password/new-password.component';
 import { ResetPasswordComponent } from './Auth/reset-password/reset-password.component';
 import { SignupComponent } from './Auth/signup/signup.component';
+import { ComplaintComponent } from './complaint/complaint.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuard } from './guard/auth.guard';
 
@@ -18,6 +19,7 @@ const routes: Routes = [
     component: DashboardComponent,
     canActivate: [AuthGuard],
   },
+  { path: 'complaint', component:ComplaintComponent}
 ];
 
 @NgModule({

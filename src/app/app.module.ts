@@ -19,6 +19,7 @@ import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { ComplaintComponent } from './complaint/complaint.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     ResetPasswordComponent,
     NewPasswordComponent,
     DashboardComponent,
+    ComplaintComponent,
   ],
   imports: [
     BrowserModule,
