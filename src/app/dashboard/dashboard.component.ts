@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../service/api.service';
 import { AuthService } from '../service/auth.service';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -65,6 +66,10 @@ export class DashboardComponent implements OnInit {
   search() {
     if (this.searchText == ' ') {
       this.getSMTPDeliveryNotification();
+      this.getSMTPComplaintNotification();
+      this.getSMTPBounceNotification();
+      this.getSMTPOpenNotification();
+      this.getSMTPClickNotification();
     } else {
       this.deliveryData = this.deliveryData.filter(
         (res: { searchText: string }) => {
@@ -74,42 +79,42 @@ export class DashboardComponent implements OnInit {
         }
       );
     }
-    if (this.searchText == '') {
-      this.getSMTPComplaintNotification;
-    } else {
-      this.complaintData = this.complaintData.filter((res: any) => {
-        return res.searchText
-          .toLocaleLowerCase()
-          .match(this.searchText.toLocaleLowerCase());
-      });
-    }
-    if (this.searchText == '') {
-      this.getSMTPBounceNotification;
-    } else {
-      this.bounceData = this.bounceData.filter((res: any) => {
-        return res.searchText
-          .toLocaleLowerCase()
-          .match(this.searchText.toLocaleLowerCase());
-      });
-    }
-    if (this.searchText == '') {
-      this.getSMTPOpenNotification;
-    } else {
-      this.openData = this.openData.filter((res: any) => {
-        return res.searchText
-          .toLocaleLowerCase()
-          .match(this.searchText.toLocaleLowerCase());
-      });
-    }
-    if (this.searchText == '') {
-      this.getSMTPClickNotification;
-    } else {
-      this.clickData = this.clickData.filter((res: any) => {
-        return res.searchText
-          .toLocaleLowerCase()
-          .match(this.searchText.toLocaleLowerCase());
-      });
-    }
+    // if (this.searchText == '') {
+    //   this.getSMTPComplaintNotification;
+    // } else {
+    //   this.complaintData = this.complaintData.filter((res: any) => {
+    //     return res.searchText
+    //       .toLocaleLowerCase()
+    //       .match(this.searchText.toLocaleLowerCase());
+    //   });
+    // }
+    // if (this.searchText == '') {
+    //   this.getSMTPBounceNotification;
+    // } else {
+    //   this.bounceData = this.bounceData.filter((res: any) => {
+    //     return res.searchText
+    //       .toLocaleLowerCase()
+    //       .match(this.searchText.toLocaleLowerCase());
+    //   });
+    // }
+    // if (this.searchText == '') {
+    //   this.getSMTPOpenNotification;
+    // } else {
+    //   this.openData = this.openData.filter((res: any) => {
+    //     return res.searchText
+    //       .toLocaleLowerCase()
+    //       .match(this.searchText.toLocaleLowerCase());
+    //   });
+    // }
+    // if (this.searchText == '') {
+    //   this.getSMTPClickNotification;
+    // } else {
+    //   this.clickData = this.clickData.filter((res: any) => {
+    //     return res.searchText
+    //       .toLocaleLowerCase()
+    //       .match(this.searchText.toLocaleLowerCase());
+    //   });
+    // }
   }
   //Pagination
 

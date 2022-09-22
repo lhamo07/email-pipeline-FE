@@ -18,6 +18,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
 
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     FormsModule,
     Ng2SearchPipeModule,
     NgxPaginationModule,
+    BrowserAnimationsModule,
+    BsDatepickerModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],
