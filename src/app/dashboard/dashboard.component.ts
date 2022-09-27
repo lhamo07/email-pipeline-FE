@@ -75,11 +75,13 @@ export class DashboardComponent implements OnInit {
             .match(this.searchText.toLocaleLowerCase());
         }
       );
+
       this.bounceData = this.bounceData.filter((res: any) => {
         return res.searchText
           .toLocaleLowerCase()
           .match(this.searchText.toLocaleLowerCase());
       });
+
       this.complaintData = this.complaintData.filter((res: any) => {
         return res.searchText
           .toLocaleLowerCase()
@@ -96,6 +98,7 @@ export class DashboardComponent implements OnInit {
           .match(this.searchText.toLocaleLowerCase());
       });
     }
+    console.log('search data', this.deliveryData);
   }
   //Pagination
 
@@ -154,6 +157,7 @@ export class DashboardComponent implements OnInit {
           new Date(m.SnsPublishTime) >= new Date(startDate) &&
           new Date(m.SnsPublishTime) <= new Date(endDate)
       );
+
       console.log(this.deliveryData);
       this.bounceData = this.bounceData.filter(
         (b: any) =>
@@ -162,5 +166,9 @@ export class DashboardComponent implements OnInit {
       );
       console.log(this.bounceData);
     }
+  }
+  clearData() {
+    this.getSMTPDeliveryNotification();
+    this.getSMTPBounceNotification();
   }
 }

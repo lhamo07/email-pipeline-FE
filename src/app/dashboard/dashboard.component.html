@@ -53,7 +53,7 @@
       </div>
       <div class="col-sm-12 col-md-6">
         <!-- new dropdown -->
-        <div class="dropdown dataTables_filter" id="dtBasicExample_filter">
+        <!-- <div class="dropdown dataTables_filter" id="dtBasicExample_filter">
           <button
             class="btn btn-outline-primary dropdown-toggle"
             type="button"
@@ -68,7 +68,7 @@
             <li><a class="dropdown-item" href="#">Another action</a></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
-        </div>
+        </div> -->
         <!-- new dropdown -->
 
         <div id="dtBasicExample_filter" class="dataTables_filter">
@@ -94,7 +94,6 @@
           <label
             >Date Picker:
             <input
-              type="search"
               placeholder="10/09/2022 - 11/13/2022"
               class="form-control rounded-0 date-pick"
               bsDaterangepicker
@@ -108,16 +107,17 @@
               (bsValueChange)="filterDateRange($event)"
             />
           </label>
-          <!-- <div class="input-group-btn">
+          <div class="input-group-btn">
             <button
-              type="button"
+              type="submit"
               class="btn btn-primary rounded-0 apply"
               style="height: -webkit-fill-available"
               aria-expanded="false"
+              (click)="clearData()"
             >
-              Apply
+              Reset
             </button>
-          </div> -->
+          </div>
         </div>
       </div>
 
@@ -292,7 +292,7 @@
                   *ngFor="
                     let delivery of deliveryData
                       | filter: searchText
-                      | paginate: { itemsPerPage: 5, currentPage: p }
+                      | paginate: { itemsPerPage: 4, currentPage: p }
                   "
                 >
                   <td class="sorting_1">{{ delivery.SMTPresponse }}</td>
@@ -385,7 +385,7 @@
                   *ngFor="
                     let complaint of complaintData
                       | filter: searchText
-                      | paginate: { itemsPerPage: 5, currentPage: p }
+                      | paginate: { itemsPerPage: 4, currentPage: p }
                   "
                 >
                   <td class="sorting_1">
@@ -518,7 +518,7 @@
                   *ngFor="
                     let bounce of bounceData
                       | filter: searchText
-                      | paginate: { itemsPerPage: 5, currentPage: p }
+                      | paginate: { itemsPerPage: 4, currentPage: p }
                   "
                 >
                   <td class="sorting_1">{{ bounce.SESDestinationAddress }}</td>
@@ -611,7 +611,7 @@
                   *ngFor="
                     let click of clickData
                       | filter: searchText
-                      | paginate: { itemsPerPage: 5, currentPage: p }
+                      | paginate: { itemsPerPage: 4, currentPage: p }
                   "
                 >
                   <td class="sorting_1">{{ click.SnsPublishTime }}</td>
@@ -701,7 +701,7 @@
                   *ngFor="
                     let open of openData
                       | filter: searchText
-                      | paginate: { itemsPerPage: 5, currentPage: p }
+                      | paginate: { itemsPerPage: 4, currentPage: p }
                   "
                 >
                   <td class="sorting_1">{{ open.SnsPublishTime }}</td>
