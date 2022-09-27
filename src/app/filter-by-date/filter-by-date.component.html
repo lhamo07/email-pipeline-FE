@@ -1,0 +1,86 @@
+<p>filter-by-date works!</p>
+<div class="card">
+  <div class="card-body pb-0">
+    <h4 style="text-align: center">
+      Example of Date Picker and Date Range Picker
+    </h4>
+    <div class="row">
+      <div class="col-12 col-md-12">
+        <div class="card">
+          <nav
+            class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top nav-kc"
+          >
+            <div class="col-md-6">
+              <div class="input-group">
+                <input
+                  type="text"
+                  name="daterange"
+                  autocomplete="off"
+                  bsDaterangepicker
+                  [bsConfig]="{
+                    rangeInputFormat: 'MMMM Do YYYY',
+                    dateInputFormat: 'MMMM Do YYYY',
+                    showWeekNumbers: false
+                  }"
+                  id="DateOfBirth"
+                  placeholder="Date Range"
+                  (bsValueChange)="dateRangeCreated($event)"
+                  class="form-control"
+                />
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="input-group">
+                <input
+                  type="text"
+                  name="daterange"
+                  autocomplete="off"
+                  bsDatepicker
+                  [bsConfig]="{
+                    dateInputFormat: 'MMMM Do YYYY',
+                    showWeekNumbers: false
+                  }"
+                  id="DateOfBirth"
+                  placeholder="Date"
+                  (bsValueChange)="dateCreated($event)"
+                  class="form-control"
+                />
+              </div>
+            </div>
+          </nav>
+          <div class="card-body position-relative">
+            <div class="table-responsive cnstr-record product-tbl">
+              <table class="table table-bordered heading-hvr">
+                <thead>
+                  <tr>
+                    <th>ArtNo.</th>
+                    <th>Brand</th>
+                    <th>Price/Unit</th>
+                    <th>Provider</th>
+                    <th>P. Art. N</th>
+                    <th>S. A/C</th>
+                    <th>Buy A/C</th>
+                    <th>Created Date</th>
+                  </tr>
+                </thead>
+
+                <tbody *ngFor="let product of products; let i = index">
+                  <tr>
+                    <td align="center">{{ product.ArtNo }}</td>
+                    <td>{{ product.Brand }}</td>
+                    <td>{{ product.Price }}</td>
+                    <td>{{ product.Provider }}</td>
+                    <td>{{ product.ProviderArtNo }}</td>
+                    <td>{{ product.SalesAccount }}</td>
+                    <td>{{ product.BuyAccount }}</td>
+                    <td>{{ product.CreatedDate }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

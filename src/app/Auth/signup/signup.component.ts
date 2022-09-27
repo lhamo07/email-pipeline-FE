@@ -28,31 +28,32 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
     this.registerForm = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),
-      password: new FormControl("", 
-      Validators.compose([
-        Validators.required,
-        // check whether the entered password has a number
-        CustomValidators.patternValidator(/\d/, {
-          hasNumber: true
-        }),
-        // check whether the entered password has upper case letter
-        CustomValidators.patternValidator(/[A-Z]/, {
-          hasCapitalCase: true
-        }),
-        // check whether the entered password has a lower case letter
-        CustomValidators.patternValidator(/[a-z]/, {
-          hasSmallCase: true
-        }),
-        // check whether the entered password has a special character
-        CustomValidators.patternValidator(
-          /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/,
-          {
-            hasSpecialCharacters: true
-          }
-        ),
-        Validators.minLength(8)
-      ])
-    ),
+      password: new FormControl(
+        '',
+        Validators.compose([
+          Validators.required,
+          // check whether the entered password has a number
+          CustomValidators.patternValidator(/\d/, {
+            hasNumber: true,
+          }),
+          // check whether the entered password has upper case letter
+          CustomValidators.patternValidator(/[A-Z]/, {
+            hasCapitalCase: true,
+          }),
+          // check whether the entered password has a lower case letter
+          CustomValidators.patternValidator(/[a-z]/, {
+            hasSmallCase: true,
+          }),
+          // check whether the entered password has a special character
+          CustomValidators.patternValidator(
+            /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/,
+            {
+              hasSpecialCharacters: true,
+            }
+          ),
+          Validators.minLength(8),
+        ])
+      ),
       code: new FormControl(null),
     });
   }
@@ -70,7 +71,7 @@ export class SignupComponent implements OnInit {
         // this.router.navigate(['/code']);
       })
       .catch((error) => {
-        console.log('error', error);
+        this.notify.showError(error.message);
       });
     // console.log('user', this.user.email);
   }
@@ -94,7 +95,10 @@ export class SignupComponent implements OnInit {
       });
   }
 
-  errorCatcher(type: string, control: string): boolean{
-    return this.registerForm.controls[control].hasError('required') || this.registerForm.controls[control].hasError(type)
+  errorCatcher(type: string, control: string): boolean {
+    return (
+      this.registerForm.controls[control].hasError('required') ||
+      this.registerForm.controls[control].hasError(type)
+    );
   }
 }

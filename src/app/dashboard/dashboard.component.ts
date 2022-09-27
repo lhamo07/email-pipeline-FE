@@ -1,7 +1,10 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import * as moment from 'moment';
 import { ApiService } from '../service/api.service';
 import { AuthService } from '../service/auth.service';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,20 +12,39 @@ import { AuthService } from '../service/auth.service';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
+  members: any[] = [
+    {
+      id: 1,
+      name: 'Jack',
+      date: '01-06-2017',
+    },
+    {
+      id: 2,
+      name: 'Allen',
+      date: '07-08-2017',
+    },
+    {
+      id: 3,
+      name: 'Annie',
+      date: '22-11-2017',
+    },
+    {
+      id: 4,
+      name: 'Tenzin',
+      date: '2-11-2018',
+    },
+  ];
+
   deliveryData: any = [];
   complaintData: any = [];
+  productData: any = [];
   bounceData: any = [];
   clickData: any = [];
   openData: any = [];
-  endPage: number = 3;
-  startPage: number = 0;
-  filterdPost: any;
-  pageNumber: number = 1;
-  pagination: boolean = true;
-  postCount: number = 0;
   searchText: any;
   p: number = 1;
-
+  fromDate!: Date;
+  toDate!: Date;
   constructor(
     private apiService: ApiService,
     private authService: AuthService,
@@ -31,6 +53,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getSMTPDeliveryNotification();
+    this.getData();
   }
   getSMTPDeliveryNotification() {
     this.apiService.SMTPDeliveryNotifications().subscribe((res) => {
@@ -158,4 +181,35 @@ export class DashboardComponent implements OnInit {
       });
     }
   }
+  getData() {
+    this.productData = this.apiService.getAllProducts();
+  }
+  filterDateRange($event: any) {
+    let startDate = $event[0].toJSON().split('T')[0];
+    let endDate = $event[1].toJSON().split('T')[0];
+    console.log(startDate);
+    console.log(endDate);
+    this.productData = this.productData.filter(
+      (m: any) =>
+        new Date(m.CreatedDate) >= new Date(startDate) &&
+        new Date(m.CreatedDate) <= new Date(endDate)
+    );
+  }
+  // filterDate() {
+  //   let startDate = this.fromDate;
+  //   let formatedDate = moment(this.fromDate).format('YYYY/MM/DD');
+  //   console.log(formatedDate);
+
+  //   console.log(startDate);
+
+  //   let endDate = '06-07-2017';
+  //   let selectedMembers = this.members.filter(
+  //     (m: any) => new Date(m.date) == new Date(startDate)
+
+  //     // new Date(m.date) <= new Date(endDate)
+  //   );
+
+  //   console.log(selectedMembers);
+  //   console.log(this.members);
+  // }
 }
