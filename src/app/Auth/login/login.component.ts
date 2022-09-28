@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService, IUser } from 'src/app/service/auth.service';
 import { Router } from '@angular/router';
 import { ToastNotificationService } from 'src/app/service/toast-notification.service';
@@ -22,8 +22,11 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.signInForm = new FormGroup({
-      email: new FormControl(null),
-      password: new FormControl(null),
+      email: new FormControl(null, [Validators.required, Validators.email]),
+      password: new FormControl(null, [
+        Validators.required,
+        Validators.minLength(8),
+      ]),
     });
   }
   onSignin() {

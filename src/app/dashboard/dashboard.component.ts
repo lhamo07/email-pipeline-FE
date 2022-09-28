@@ -32,31 +32,26 @@ export class DashboardComponent implements OnInit {
   getSMTPDeliveryNotification() {
     this.apiService.SMTPDeliveryNotifications().subscribe((res) => {
       this.deliveryData = res.delivered;
-      console.log(this.deliveryData);
     });
   }
   getSMTPComplaintNotification() {
     this.apiService.SMTPComplaintNotifications().subscribe((res) => {
       this.complaintData = res.delivered;
-      console.log(this.complaintData);
     });
   }
   getSMTPBounceNotification() {
     this.apiService.smtpBounceNotification().subscribe((res) => {
       this.bounceData = res.delivered;
-      console.log(this.bounceData);
     });
   }
   getSMTPOpenNotification() {
     this.apiService.SMTPOpenNotifications().subscribe((res) => {
       this.openData = res.open;
-      console.log(this.openData);
     });
   }
   getSMTPClickNotification() {
     this.apiService.SMTPClickNotifications().subscribe((res) => {
       this.clickData = res.click;
-      console.log(this.clickData);
     });
   }
   //search
@@ -113,28 +108,27 @@ export class DashboardComponent implements OnInit {
     if (value == 'delivery') {
       this.apiService.SMTPDeliveryNotifications().subscribe((res) => {
         this.deliveryData = res.delivered;
+        this.p = 1;
       });
     } else if (value == 'complaint') {
       this.apiService.SMTPComplaintNotifications().subscribe((res) => {
         this.complaintData = res.delivered;
+        this.p = 1;
       });
-
-      console.log('complaint');
     } else if (value == 'bounce') {
       this.apiService.smtpBounceNotification().subscribe((res) => {
         this.bounceData = res.delivered;
+        this.p = 1;
       });
-
-      console.log('bounce');
     } else if (value == 'click') {
       this.apiService.SMTPClickNotifications().subscribe((res) => {
         this.clickData = res.click;
+        this.p = 1;
       });
-
-      console.log('bounce');
     } else {
       this.apiService.SMTPOpenNotifications().subscribe((res) => {
         this.openData = res.open;
+        this.p = 1;
       });
     }
   }
@@ -158,7 +152,6 @@ export class DashboardComponent implements OnInit {
           new Date(m.SnsPublishTime) <= new Date(endDate)
       );
 
-      console.log(this.deliveryData);
       this.bounceData = this.bounceData.filter(
         (b: any) =>
           new Date(b.SnsPublishTime) >= new Date(startDate) &&
@@ -167,7 +160,7 @@ export class DashboardComponent implements OnInit {
       console.log(this.bounceData);
     }
   }
-  clearData() {
+  ResetData() {
     this.getSMTPDeliveryNotification();
     this.getSMTPBounceNotification();
   }

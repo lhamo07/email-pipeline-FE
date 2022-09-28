@@ -1,25 +1,26 @@
 <section class="h-100 gradient-form bg-light">
-    <div class="container-lg py-3" style="height: 100vh !important">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-xl-10">
-                <div class="card rounded-3 text-black">
-                    <div class="row g-0">
-                        <div class="col-lg-6">
-                            <div class="card-body p-md-5 mx-md-1">
-                                <div class="text-left">
-                                    <!-- <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp" style="width: 185px;" alt="logo"> -->
-                                    <h4 class="mt-1 mb-4 pb-1">Sign In your Account</h4>
-                                </div>
+  <div class="container-lg py-3" style="height: 100vh !important">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-xl-10">
+        <div class="card rounded-3 text-black">
+          <div class="row g-0">
+            <div class="col-lg-6">
+              <div class="card-body p-md-5 mx-md-1">
+                <div class="text-left">
+                  <!-- <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp" style="width: 185px;" alt="logo"> -->
+                  <h4 class="mt-1 mb-4 pb-1">Sign In your Account</h4>
+                </div>
 
-                                <form [formGroup]="signInForm" (ngSubmit)="onSignin()">
-                                    <!-- <p>Please login to your account</p> -->
-                                    <!-- <div class="form-outline mb-3">
+                <form [formGroup]="signInForm" (ngSubmit)="onSignin()">
+                  <!-- <p>Please login to your account</p> -->
+                  <!-- <div class="form-outline mb-3">
                                         <label class="form-label" for="form2Example11">Fullname</label>
                                         <input type="text" id="form2Example11" class="form-control" placeholder="John Shrestha" />
                                     </div> -->
 
-                                    <div class="form-outline mb-3">
-                                        <label class="form-label" for="form22Example2">Email Address</label
+                  <div class="form-outline mb-3">
+                    <label class="form-label" for="form22Example2"
+                      >Email Address</label
                     >
                     <input
                       type="email"
@@ -28,6 +29,15 @@
                       placeholder="john@gmail.com"
                       formControlName="email"
                     />
+                    <span
+                      class="text-danger"
+                      *ngIf="
+                        signInForm.get('email')?.invalid &&
+                        signInForm.get('email')?.touched
+                      "
+                    >
+                      Please Enter a valid email address
+                    </span>
                   </div>
 
                   <!-- <div class="form-outline mb-3">
@@ -35,8 +45,9 @@
                                         <input type="number" id="form2Example33" class="form-control" placeholder="+987654123x" />
                                     </div> -->
 
-                                    <div class="form-outline mb-4">
-                                        <label class="form-label" for="form2Example44">Password</label
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="form2Example44"
+                      >Password</label
                     >
                     <input
                       type="password"
@@ -44,6 +55,15 @@
                       class="form-control"
                       formControlName="password"
                     />
+                    <span
+                      class="text-danger"
+                      *ngIf="
+                        signInForm.get('password')?.invalid &&
+                        signInForm.get('password')?.touched
+                      "
+                    >
+                      Enter a valid password</span
+                    >
                     <!-- <label
                       class="form-label fw-lighter fs-sm pass"
                       for="form2Example44"

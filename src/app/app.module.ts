@@ -20,7 +20,6 @@ import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { ComplaintComponent } from './complaint/complaint.component';
-import { FilterByDateComponent } from './filter-by-date/filter-by-date.component';
 
 @NgModule({
   declarations: [
@@ -32,14 +31,15 @@ import { FilterByDateComponent } from './filter-by-date/filter-by-date.component
     NewPasswordComponent,
     DashboardComponent,
     ComplaintComponent,
-    FilterByDateComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      timeOut: 2000,
+    }),
     IconsModule,
     HttpClientModule,
     FormsModule,
