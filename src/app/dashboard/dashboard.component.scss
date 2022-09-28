@@ -9,22 +9,5 @@ input.js-site-nav-inline-search-input.site-nav-inline-search-input {
 .site-nav-inline-search .site-nav-inline-search-input {
     // max-width: 124px;
     padding-left: 38px;
+    width: 300px;
 }
-select{
-    margin:3%;
-    // background:rgb(93, 172, 224);;
-    font-size:1rem;
-    color:rgb(0, 0, 0);
-    outline: none;
-    display: block;
-    padding: 0.5em 3em 1em 1.5em;
-    transition: background-color 1s, border-color 1s;
-    font-family: inherit;
-    line-height: inherit;
-    float: right;
-  }
-  select option:checked { 
-    // background:rgb(140, 157, 234);
-    outline:none;
-    border-bottom:1px solid #1b1e24;
-    }

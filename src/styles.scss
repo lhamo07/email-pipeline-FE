@@ -7,11 +7,26 @@
     border: none !important;
 }
 
-// .btn-outline-primary{
-//     border: 1px solid $primary;
-// }
 .btn-primary:hover {
     background-color: $primary-bg-light !important;
+}
+
+.btn:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.btn {
+    box-shadow: none !important
+}
+
+.input-btn:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.input-btn {
+    box-shadow: none !important
 }
 
 .color-gray {
@@ -24,7 +39,11 @@ label.form-label.fw-lighter.fs-sm.pass {
 }
 
 .color-primary {
-    color: $primary;
+    color: $bg-primary;
+}
+
+.bg-footer {
+    background-color: $bg-primary;
 }
 
 // .bg {
@@ -63,23 +82,56 @@ label.form-label.fw-lighter.fs-sm.pass {
     display: none;
 }
 
+// form.site-nav-inline-search.js-site-nav-global-search.float-end.ng-untouched.ng-pristine.ng-valid {
+//     position: relative !important;
+// }
 svg.bi.bi-search {
     position: absolute;
-    /* bottom: 27px; */
-    top: 189px;
+    top: 22px;
     transform: translate(11px, -50%);
     color: #9e9ea7;
 }
 
+.search-bar {
+    position: relative !important;
+}
+
 select.select-table {
-    border: 1px solid #dee2e6;
+    border: 1px solid #2A85BB;
     border-radius: 4px;
     outline: none;
+    color: #2A85BB;
+    font-size: 18px;
+    font-weight: 600;
 }
 
 // calendar::datepicker::begin
 bs-daterangepicker-container.bottom.ng-tns-c75-0.ng-star-inserted {
     left: 90px !important;
+}
+
+input.form-control.rounded-0.date-pick.ng-valid.ng-touched.ng-dirty {
+    outline: none !important;
+}
+
+// table
+.table>thead {
+    color: #2A85BB;
+    background: #ddecf5;
+}
+
+.ngx-pagination .current {
+    background: #2A85BB !important;
+}
+
+div.dataTables_wrapper div.dataTables_filter input {
+    width: auto;
+    color: #6e6b6b;
+}
+
+// calendar color
+.theme-green .bs-datepicker-head {
+    background-color: #2e85bb;
 }
 
 // calender::datepicker::end
