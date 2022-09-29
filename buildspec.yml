@@ -1,21 +1,24 @@
 version: 0.2
+
 env:
   variables:
-    APP_NAME: "angular-cicd-pipeline-demo"
+    CACHE_CONTROL: "86400"
+    S3_BUCKET: "{{s3_bucket_url}}"
+    BUILD_FOLDER: "dist"
 phases:
   install:
     runtime-versions:
-      nodejs: 12
+      nodejs: 14
     commands:
-      - echo install process started
-      - npm install && npm install -g @angular/cli
+      - echo Installing source NPM dependencies...
+      - npm install
+      - npm install -g @angular/cli
   build:
     commands:
-      - echo build process started now
-      - ng build --configuration=production
-  post_build:
-    commands:
-      - echo build process finished, we should uplload to S3 now
-      - cd dist/$APP_NAME
-      - ls -la
-      - aws s3 sync . s3://my-awsome-bucket-of-files --delete
+      - echo Build started
+      - ng build
+artifacts:
+  files:
+    - "**/*"
+  base-directory: "dist*"
+  discard-paths: yes
