@@ -11,6 +11,7 @@ import { ToastNotificationService } from 'src/app/service/toast-notification.ser
 })
 export class LoginComponent implements OnInit {
   signInForm!: FormGroup;
+  loading!: boolean;
   user: IUser;
   constructor(
     private authService: AuthService,
@@ -32,6 +33,8 @@ export class LoginComponent implements OnInit {
   onSignin() {
     this.user.email = this.signInForm.get('email')?.value;
     this.user.password = this.signInForm.get('password')?.value;
+    this.loading = true;
+
     this.authService
       .signIn(this.user)
       .then(() => {
@@ -40,6 +43,7 @@ export class LoginComponent implements OnInit {
       })
       .catch(() => {
         this.notify.showError('Incorrect email or password');
+        this.loading = false;
       });
   }
 }

@@ -160,7 +160,7 @@ export class DashboardComponent implements OnInit {
       console.log(this.bounceData);
     }
   }
-  ResetData() {
+  resetData() {
     this.getSMTPDeliveryNotification();
     this.getSMTPBounceNotification();
   }

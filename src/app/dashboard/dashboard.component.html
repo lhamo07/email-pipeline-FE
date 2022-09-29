@@ -78,7 +78,7 @@
             (change)="selectChangeHandler(data.value)"
             class="select-table"
           >
-            <option selected value="delivery">Select Notification Table</option>
+            <option selected value="delivery">Select Table</option>
             <option value="delivery">SMTP Delivery Notifications</option>
             <option value="complaint">SMTP Complaint Notifications</option>
             <option value="bounce">SMTP Bounce Notifications</option>
@@ -116,7 +116,7 @@
               class="btn btn-primary rounded-0 apply reset"
               style="height: -webkit-fill-available"
               aria-expanded="false"
-              (click)="ResetData()"
+              (click)="resetData()"
             >
               Reset
             </button>
