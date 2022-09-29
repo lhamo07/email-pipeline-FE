@@ -26,9 +26,9 @@ export class ApiService {
   }
   public SMTPDeliveryNotifications() {
     let url =
-      'https://eankhwjso9.execute-api.ap-southeast-1.amazonaws.com/dev/delivered ';
-
+      'https://vm35citgg6.execute-api.ap-southeast-1.amazonaws.com/test/delivered';
     // 'https://m3p7m3x86h.execute-api.ap-southeast-1.amazonaws.com/test/delivered';
+    //'https://m3p7m3x86h.execute-api.ap-southeast-1.amazonaws.com/test/delivered'
 
     return this.http.post<IDelivered>(url, {
       headers: new HttpHeaders({

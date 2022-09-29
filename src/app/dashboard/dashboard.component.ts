@@ -100,7 +100,7 @@ export class DashboardComponent implements OnInit {
   signOut() {
     this.authService.signOut().then(() => {
       console.log('signout successfully');
-      this.router.navigate(['/login']);
+      this.router.navigate(['/signup']);
     });
   }
   //dropdown
