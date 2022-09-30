@@ -17,8 +17,8 @@ export class ApiService {
   }
   public SMTPComplaintNotifications() {
     let url =
-      'https://eankhwjso9.execute-api.ap-southeast-1.amazonaws.com/dev/complaint';
-    return this.http.get<IDelivered>(url, {
+      'https://vm35citgg6.execute-api.ap-southeast-1.amazonaws.com/test/complaint';
+    return this.http.post<IDelivered>(url, {
       headers: new HttpHeaders({
         'content-type': 'application/json',
       }),
@@ -38,8 +38,8 @@ export class ApiService {
   }
   public SMTPClickNotifications() {
     let url =
-      'https://eankhwjso9.execute-api.ap-southeast-1.amazonaws.com/dev/click';
-    return this.http.get<IClick>(url, {
+      'https://vm35citgg6.execute-api.ap-southeast-1.amazonaws.com/test/click';
+    return this.http.post<IClick>(url, {
       headers: new HttpHeaders({
         'content-type': 'application/json',
       }),
@@ -47,8 +47,8 @@ export class ApiService {
   }
   public SMTPOpenNotifications() {
     let url =
-      'https://eankhwjso9.execute-api.ap-southeast-1.amazonaws.com/dev/open';
-    return this.http.get<IOpen>(url, {
+      'https://vm35citgg6.execute-api.ap-southeast-1.amazonaws.com/test/open';
+    return this.http.post<IOpen>(url, {
       headers: new HttpHeaders({
         'content-type': 'application/json',
       }),

@@ -136,6 +136,9 @@ export class DashboardComponent implements OnInit {
   getData() {
     this.deliveryData = this.apiService.SMTPDeliveryNotifications();
     this.bounceData = this.apiService.smtpBounceNotification();
+    this.complaintData = this.apiService.SMTPComplaintNotifications();
+    this.openData = this.apiService.SMTPOpenNotifications();
+    this.clickData = this.apiService.SMTPClickNotifications();
   }
   filterDateRange($event: any) {
     if (this.searchDate == '') {
@@ -158,10 +161,31 @@ export class DashboardComponent implements OnInit {
           new Date(b.SnsPublishTime) <= new Date(endDate)
       );
       console.log(this.bounceData);
+      this.complaintData = this.complaintData.filter(
+        (b: any) =>
+          new Date(b.SnsPublishTime) >= new Date(startDate) &&
+          new Date(b.SnsPublishTime) <= new Date(endDate)
+      );
+      console.log(this.complaintData);
+      this.openData = this.openData.filter(
+        (b: any) =>
+          new Date(b.SnsPublishTime) >= new Date(startDate) &&
+          new Date(b.SnsPublishTime) <= new Date(endDate)
+      );
+      console.log(this.openData);
+      this.clickData = this.clickData.filter(
+        (b: any) =>
+          new Date(b.SnsPublishTime) >= new Date(startDate) &&
+          new Date(b.SnsPublishTime) <= new Date(endDate)
+      );
+      console.log(this.clickData);
     }
   }
   resetData() {
     this.getSMTPDeliveryNotification();
     this.getSMTPBounceNotification();
+    this.getSMTPComplaintNotification();
+    this.getSMTPOpenNotification();
+    this.getSMTPClickNotification();
   }
 }
