@@ -63,13 +63,11 @@ export class DashboardComponent implements OnInit {
       this.getSMTPOpenNotification();
       this.getSMTPClickNotification();
     } else {
-      this.deliveryData = this.deliveryData.filter(
-        (res: { searchText: string }) => {
-          return res.searchText
-            .toLocaleLowerCase()
-            .match(this.searchText.toLocaleLowerCase());
-        }
-      );
+      this.deliveryData = this.deliveryData.filter((res: any) => {
+        return res.searchText
+          .toLocaleLowerCase()
+          .match(this.searchText.toLocaleLowerCase());
+      });
 
       this.bounceData = this.bounceData.filter((res: any) => {
         return res.searchText

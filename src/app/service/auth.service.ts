@@ -52,13 +52,13 @@ export class AuthService {
   }
 
   public confirmForgotPassword(user: IUser): Promise<any> {
-    return Auth.forgotPasswordSubmit(user.email, user.otp, user.newpassword)
-      .then(() => {
-        this.authenticationSubject.next(true);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    return Auth.forgotPasswordSubmit(
+      user.email,
+      user.otp,
+      user.newpassword
+    ).then(() => {
+      this.authenticationSubject.next(true);
+    });
   }
   public signOut(): Promise<any> {
     return Auth.signOut().then(() => {
