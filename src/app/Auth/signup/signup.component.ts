@@ -67,7 +67,7 @@ export class SignupComponent implements OnInit {
       .signUp(this.user)
       .then(() => {
         this.isConfirm = true;
-        this.notify.showSuccess('Register successfully');
+        this.notify.showSuccess('Register successful');
         // this.router.navigate(['/code']);
       })
       .catch((error) => {
@@ -90,8 +90,9 @@ export class SignupComponent implements OnInit {
       .then(() => {
         this.router.navigate(['/login']);
       })
-      .catch(() => {
+      .catch((error) => {
         this.loading = false;
+        this.notify.showError(error.message);
       });
   }
 

@@ -38,11 +38,11 @@ export class LoginComponent implements OnInit {
     this.authService
       .signIn(this.user)
       .then(() => {
-        this.notify.showSuccess('Login successful!');
+        this.notify.showSuccess('Login successful');
         this.router.navigate(['/dashboard']);
       })
-      .catch(() => {
-        this.notify.showError('Incorrect email or password');
+      .catch((error) => {
+        this.notify.showError(error.message);
         this.loading = false;
       });
   }

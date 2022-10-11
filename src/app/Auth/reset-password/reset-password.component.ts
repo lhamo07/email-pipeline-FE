@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService, IUser } from 'src/app/service/auth.service';
+import { ToastNotificationService } from 'src/app/service/toast-notification.service';
 
 @Component({
   selector: 'app-reset-password',
@@ -13,7 +14,11 @@ export class ResetPasswordComponent implements OnInit {
   forgotPassForm!: FormGroup;
   isConfirm: boolean = false;
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private notify: ToastNotificationService
+  ) {
     this.user = {} as IUser;
   }
 
@@ -49,11 +54,11 @@ export class ResetPasswordComponent implements OnInit {
     this.authService
       .confirmForgotPassword(this.user)
       .then(() => {
-        // console.log(this.user.newpassword);
+        this.notify.showSuccess('Password reset successfully');
         this.router.navigate(['/login']);
       })
       .catch((error) => {
-        console.log(error);
+        this.notify.showError(error.message);
       });
   }
 }
