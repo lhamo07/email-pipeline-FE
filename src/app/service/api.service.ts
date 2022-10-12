@@ -15,7 +15,7 @@ export class ApiService {
     return this.http.post<IDelivered>(url, {
       headers: new HttpHeaders({
         'content-type': 'application/json',
-        // Authorization: `Bearer ${token}`,
+        // Authorization: `localStorage.getItem('CognitoIdentityServiceProvider.3b03ji1vjudf0fqlm48gjkn9t3.LastAuthUser')`,
       }),
     });
   }
@@ -30,12 +30,13 @@ export class ApiService {
   }
   public SMTPDeliveryNotifications() {
     let url =
-      'https://ytvoakqcha.execute-api.ap-southeast-1.amazonaws.com/dev/delivered';
+      'https://m3p7m3x86h.execute-api.ap-southeast-1.amazonaws.com/test/delivered';
     // 'https://m3p7m3x86h.execute-api.ap-southeast-1.amazonaws.com/test/delivered';
 
     return this.http.post<IDelivered>(url, {
       headers: new HttpHeaders({
         'content-type': 'application/json',
+        // Authorization: token,
       }),
     });
   }
