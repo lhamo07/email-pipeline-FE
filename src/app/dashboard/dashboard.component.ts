@@ -185,5 +185,6 @@ export class DashboardComponent implements OnInit {
     this.getSMTPComplaintNotification();
     this.getSMTPOpenNotification();
     this.getSMTPClickNotification();
+    this.p = 1;
   }
 }
