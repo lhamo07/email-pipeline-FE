@@ -30,8 +30,7 @@ export class ApiService {
   }
   public SMTPDeliveryNotifications() {
     let url =
-      'https://m3p7m3x86h.execute-api.ap-southeast-1.amazonaws.com/test/delivered';
-    // 'https://m3p7m3x86h.execute-api.ap-southeast-1.amazonaws.com/test/delivered';
+      'https://ytvoakqcha.execute-api.ap-southeast-1.amazonaws.com/dev/delivered';
 
     return this.http.post<IDelivered>(url, {
       headers: new HttpHeaders({
@@ -58,7 +57,6 @@ export class ApiService {
       }),
     });
   }
-  employees!: any[];
 }
 
 interface IDelivered {
