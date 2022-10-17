@@ -40,7 +40,7 @@ export class ResetPasswordComponent implements OnInit {
         console.log('forgot pass');
       })
       .catch((error) => {
-        console.log(error);
+        this.notify.showError(error.message);
       });
   }
   public confirmPasscode() {

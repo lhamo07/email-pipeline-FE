@@ -66,10 +66,17 @@ export class AuthService {
     });
   }
 
+  // loggedInCheck() {
+  //   return !!localStorage.getItem(
+  //     // 'CognitoIdentityServiceProvider.2situb5qd72946epu259r37fuk.LastAuthUser'
+  //     'CognitoIdentityServiceProvider.3b03ji1vjudf0fqlm48gjkn9t3.LastAuthUser'
+  //   );
+  // }
   loggedInCheck() {
-    return !!localStorage.getItem(
-      // 'CognitoIdentityServiceProvider.2situb5qd72946epu259r37fuk.LastAuthUser'
-      'CognitoIdentityServiceProvider.3b03ji1vjudf0fqlm48gjkn9t3.LastAuthUser'
+    return localStorage.getItem(
+      `CognitoIdentityServiceProvider.3b03ji1vjudf0fqlm48gjkn9t3.${localStorage.getItem(
+        'CognitoIdentityServiceProvider.3b03ji1vjudf0fqlm48gjkn9t3.LastAuthUser'
+      )}.idToken`
     );
   }
 }

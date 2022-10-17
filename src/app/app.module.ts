@@ -12,7 +12,11 @@ import { NewPasswordComponent } from './Auth/new-password/new-password.component
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { IconsModule } from './icons/icons.module';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import {
+  HttpClientModule,
+  HttpClient,
+  HTTP_INTERCEPTORS,
+} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
@@ -21,6 +25,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { ComplaintComponent } from './complaint/complaint.component';
 import { SomethinggComponent } from './somethingg/somethingg.component';
+import { AuthInterceptor } from './auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -50,7 +55,13 @@ import { SomethinggComponent } from './somethingg/somethingg.component';
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot(),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
