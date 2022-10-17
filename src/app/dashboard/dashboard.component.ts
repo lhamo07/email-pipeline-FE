@@ -101,6 +101,10 @@ export class DashboardComponent implements OnInit {
       this.router.navigate(['/signup']);
     });
   }
+
+  sendBulk(){
+    this.router.navigate(['/something']);
+  }
   //dropdown
   selectChangeHandler(value: any) {
     if (value == 'delivery') {
