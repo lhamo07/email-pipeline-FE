@@ -8,6 +8,7 @@ import { SignupComponent } from './Auth/signup/signup.component';
 import { ComplaintComponent } from './complaint/complaint.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuard } from './guard/auth.guard';
+import { SomethinggComponent } from './somethingg/somethingg.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/signup', pathMatch: 'full' },
@@ -21,6 +22,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   { path: 'complaint', component: ComplaintComponent },
+  { path: 'something', component: SomethinggComponent },
 ];
 
 @NgModule({
