@@ -1,0 +1,32 @@
+<div class="card">
+  <div class="container">
+    <div class="row">
+      <form [formGroup]="sendEmailForm" (ngSubmit)="onEmailSend()">
+        <input
+          type="text"
+          formControlName="subject"
+          id="subject"
+          class="form-control"
+          placeholder=""
+        />
+
+        <input
+          type="text"
+          formControlName="to"
+          id="to"
+          class="form-control"
+          placeholder=""
+        />
+
+        <textarea
+          class="form-control"
+          formControlName="message"
+          id="message"
+          placeholder=""
+        ></textarea>
+
+        <button type="submit" class="btn btn-primary">send email</button>
+      </form>
+    </div>
+  </div>
+</div>

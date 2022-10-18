@@ -8,6 +8,7 @@ import { SignupComponent } from './Auth/signup/signup.component';
 import { ComplaintComponent } from './complaint/complaint.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuard } from './guard/auth.guard';
+import { SendEmailComponent } from './send-email/send-email.component';
 import { SomethinggComponent } from './somethingg/somethingg.component';
 
 const routes: Routes = [
@@ -16,6 +17,8 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'reset-password', component: ResetPasswordComponent },
   { path: 'new-password', component: NewPasswordComponent },
+  { path: 'send-email', component: SendEmailComponent },
+
   {
     path: 'dashboard',
     component: DashboardComponent,

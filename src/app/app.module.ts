@@ -9,7 +9,6 @@ import { SignupComponent } from './Auth/signup/signup.component';
 import { MfaComponent } from './Auth/mfa/mfa.component';
 import { ResetPasswordComponent } from './Auth/reset-password/reset-password.component';
 import { NewPasswordComponent } from './Auth/new-password/new-password.component';
-import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { IconsModule } from './icons/icons.module';
 import {
@@ -17,7 +16,7 @@ import {
   HttpClient,
   HTTP_INTERCEPTORS,
 } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
 
@@ -26,6 +25,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { ComplaintComponent } from './complaint/complaint.component';
 import { SomethinggComponent } from './somethingg/somethingg.component';
 import { AuthInterceptor } from './auth.interceptor';
+import { SendEmailComponent } from './send-email/send-email.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +38,7 @@ import { AuthInterceptor } from './auth.interceptor';
     DashboardComponent,
     ComplaintComponent,
     SomethinggComponent,
+    SendEmailComponent,
   ],
   imports: [
     BrowserModule,

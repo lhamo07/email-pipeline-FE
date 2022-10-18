@@ -57,6 +57,15 @@ export class ApiService {
       }),
     });
   }
+  public SentEmail(param: any) {
+    let url =
+      'https://ytvoakqcha.execute-api.ap-southeast-1.amazonaws.com/dev/email';
+    return this.http.post<any>(url, param, {
+      headers: new HttpHeaders({
+        'content-type': 'application/json',
+      }),
+    });
+  }
 }
 
 interface IDelivered {
@@ -67,4 +76,9 @@ interface IClick {
 }
 interface IOpen {
   open: any;
+}
+interface IEmail {
+  subject: any;
+  to: any;
+  message: any;
 }
