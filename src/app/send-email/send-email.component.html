@@ -2,6 +2,7 @@
   <div class="container">
     <div class="row">
       <form [formGroup]="sendEmailForm" (ngSubmit)="onEmailSend()">
+        <label class="form-label" for="form22Example2">Subject</label>
         <input
           type="text"
           formControlName="subject"
@@ -9,6 +10,7 @@
           class="form-control"
           placeholder=""
         />
+        <label class="form-label" for="form22Example2">To</label>
 
         <input
           type="text"
@@ -17,6 +19,7 @@
           class="form-control"
           placeholder=""
         />
+        <label class="form-label" for="form22Example2">Message</label>
 
         <textarea
           class="form-control"
