@@ -11,7 +11,7 @@
                   <h4 class="mt-1 mb-4 pb-1">Sign In your Account</h4>
                 </div>
 
-                <form [formGroup]="signInForm" (ngSubmit)="onSignin()">
+                <form [formGroup]="signInForm" *ngIf="!forceChangePassword"(ngSubmit)="onSignin()">
                   <!-- <p>Please login to your account</p> -->
                   <!-- <div class="form-outline mb-3">
                                         <label class="form-label" for="form2Example11">Fullname</label>
@@ -71,7 +71,7 @@
                       eg.#</label
                     > -->
                   </div>
-
+                 
                   <div class="text-center pt-1 mb-4 pb-1">
                     <!-- <button class="btn btn-primary btn-lg gradient-custom-2 mb-3" type="button">Sign Up</button> -->
                     <!-- <a href="/dashboard"> -->
@@ -106,6 +106,7 @@
                   <button type="button" class="btn btn-outline-danger">Login</button> -->
                   </div>
                 </form>
+                <app-force-change-password *ngIf="forceChangePassword"  (firstTimePassword)=" onSignin()"></app-force-change-password>
               </div>
             </div>
             <div class="col-lg-6 d-flex align-items-center gradient-custom-2">

@@ -13,6 +13,9 @@ export class LoginComponent implements OnInit {
   signInForm!: FormGroup;
   loading!: boolean;
   user: IUser;
+  forceChangePassword: any = false;
+  forceChangeChallangeName = '';
+  forceChangeclientId = '';
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -34,6 +37,7 @@ export class LoginComponent implements OnInit {
     this.user.email = this.signInForm.get('email')?.value;
     this.user.password = this.signInForm.get('password')?.value;
     this.loading = true;
+   
 
     this.authService
       .signIn(this.user)

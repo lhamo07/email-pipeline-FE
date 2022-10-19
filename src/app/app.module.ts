@@ -26,6 +26,7 @@ import { ComplaintComponent } from './complaint/complaint.component';
 import { SomethinggComponent } from './somethingg/somethingg.component';
 import { AuthInterceptor } from './auth.interceptor';
 import { SendEmailComponent } from './send-email/send-email.component';
+import { ForceChangePasswordComponent } from './force-change-password/force-change-password.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { SendEmailComponent } from './send-email/send-email.component';
     ComplaintComponent,
     SomethinggComponent,
     SendEmailComponent,
+    ForceChangePasswordComponent,
   ],
   imports: [
     BrowserModule,

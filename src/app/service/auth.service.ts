@@ -11,6 +11,7 @@ export interface IUser {
   name: string;
   otp: any;
   newpassword: any;
+  oldpassword: any;
 }
 
 @Injectable({
@@ -41,15 +42,37 @@ export class AuthService {
   }
 
   public signIn(user: IUser): Promise<any> {
-    return Auth.signIn(user.email, user.password).then(() => {
-      this.authenticationSubject.next(true);
-    });
-  }
+    return Auth.signIn(user.email, user.password).then(user => {
+      if (user.challengeName === 'NEW_PASSWORD_REQUIRED') {
+          Auth.completeNewPassword(
+              user,               // the Cognito User Object
+              user.newPassword,       // the new password
+              // OPTIONAL, the required attributes
+          ).then(user => {
+              // at this time the user is logged in if no MFA required
+              console.log(user);
+          }).catch(e => {
+            console.log(e);
+          });
+      } else {
+          // other situations
+      }
+  }).catch(e => {
+      console.log(e);
+  })}
+
+
   public forgotPassword(user: IUser): Promise<any> {
     return Auth.forgotPassword(user.email).then(() => {
       this.authenticationSubject.next(true);
     });
   }
+
+  // public changePassword(user: IUser): Promise<any> {
+  //   return Auth.changePassword(user.newpassword,user.oldpassword).then(() => {
+  //     this.authenticationSubject.next(true);
+  //   });
+  // }
 
   public confirmForgotPassword(user: IUser): Promise<any> {
     return Auth.forgotPasswordSubmit(
