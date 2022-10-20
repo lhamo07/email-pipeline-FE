@@ -10,7 +10,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ForceChangePasswordComponent } from './force-change-password/force-change-password.component';
 import { AuthGuard } from './guard/auth.guard';
 import { SendEmailComponent } from './send-email/send-email.component';
-import { SomethinggComponent } from './somethingg/somethingg.component';
+import { UploadFileComponent } from './upload-file/upload-file.component';
 
 const routes: Routes = [
   // { path: '', redirectTo: '/signup', pathMatch: 'full' },
@@ -27,7 +27,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   { path: 'complaint', component: ComplaintComponent },
-  { path: 'something', component: SomethinggComponent },
+  { path: 'uploadFile', component: UploadFileComponent },
 ];
 
 @NgModule({

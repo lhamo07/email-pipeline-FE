@@ -23,10 +23,11 @@ import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { ComplaintComponent } from './complaint/complaint.component';
-import { SomethinggComponent } from './somethingg/somethingg.component';
 import { AuthInterceptor } from './auth.interceptor';
 import { SendEmailComponent } from './send-email/send-email.component';
 import { ForceChangePasswordComponent } from './force-change-password/force-change-password.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { UploadFileComponent } from './upload-file/upload-file.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import { ForceChangePasswordComponent } from './force-change-password/force-chan
     NewPasswordComponent,
     DashboardComponent,
     ComplaintComponent,
-    SomethinggComponent,
+    // UploadFileComponent,
     SendEmailComponent,
     ForceChangePasswordComponent,
   ],
@@ -57,6 +58,7 @@ import { ForceChangePasswordComponent } from './force-change-password/force-chan
     NgxPaginationModule,
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot(),
+    NgbModule,
   ],
   providers: [
     {

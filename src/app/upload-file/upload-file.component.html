@@ -1,0 +1,44 @@
+<div class="modal-header">
+  <button
+    type="button"
+    class="btn-close"
+    aria-label="Close"
+    (click)="activeModal.dismiss('Cross click')"
+  ></button>
+</div>
+<div class="modal-body">
+  <div class="container">
+    <h3>Upload File (.xls or .xlsx)</h3>
+    <br />
+    <input
+      type="file"
+      style="display: inline-block"
+      (change)="incomingfile($event)"
+      placeholder="Upload file"
+      accept=".xls, .xlsx"
+    />
+    <br /><br />
+    <button type="button" class="btn btn-info" (click)="upload()">
+      Convert to JSON
+    </button>
+    <br /><br />
+    <div class="jumbotron json_container">
+      <h5>Output:</h5>
+      <br />
+      {{ JSONObject.string }}
+    </div>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <!-- <button
+    type="button"
+    class="btn btn-outline-dark"
+    (click)="activeModal.close('Close click')"
+  >
+    Close
+  </button> -->
+  <button type="submit" class="btn btn-primary" (click)="sendEMail()">
+    sendEMail
+  </button>
+</div>

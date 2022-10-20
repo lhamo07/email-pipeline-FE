@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { SendEmailComponent } from '../send-email/send-email.component';
 import { ApiService } from '../service/api.service';
 import { AuthService } from '../service/auth.service';
+import { UploadFileComponent } from '../upload-file/upload-file.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -23,7 +26,8 @@ export class DashboardComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private modalService: NgbModal
   ) {}
 
   ngOnInit(): void {
@@ -102,7 +106,7 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  sendBulk(){
+  sendBulk() {
     this.router.navigate(['/something']);
   }
   //dropdown
@@ -191,4 +195,10 @@ export class DashboardComponent implements OnInit {
     this.getSMTPClickNotification();
     this.p = 1;
   }
+  openSendMailModal() {
+    this.modalService.open(SendEmailComponent);
+  }
+  // openUploadFileModal() {
+  //   this.modalService.open(UploadFileComponent);
+  // }
 }

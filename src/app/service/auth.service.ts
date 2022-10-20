@@ -41,26 +41,35 @@ export class AuthService {
     return Auth.confirmSignUp(user.email, user.code);
   }
 
+  // public signIn(user: IUser): Promise<any> {
+  //   return Auth.signIn(user.email, user.password)
+  //     .then((user) => {
+  //       if (user.challengeName === 'NEW_PASSWORD_REQUIRED') {
+  //         Auth.completeNewPassword(
+  //           user, // the Cognito User Object
+  //           user.newPassword // the new password
+  //           // OPTIONAL, the required attributes
+  //         )
+  //           .then((user) => {
+  //             // at this time the user is logged in if no MFA required
+  //             console.log(user);
+  //           })
+  //           .catch((e) => {
+  //             console.log(e);
+  //           });
+  //       } else {
+  //         // other situations
+  //       }
+  //     })
+  //     .catch((e) => {
+  //       console.log(e);
+  //     });
+  // }
   public signIn(user: IUser): Promise<any> {
-    return Auth.signIn(user.email, user.password).then(user => {
-      if (user.challengeName === 'NEW_PASSWORD_REQUIRED') {
-          Auth.completeNewPassword(
-              user,               // the Cognito User Object
-              user.newPassword,       // the new password
-              // OPTIONAL, the required attributes
-          ).then(user => {
-              // at this time the user is logged in if no MFA required
-              console.log(user);
-          }).catch(e => {
-            console.log(e);
-          });
-      } else {
-          // other situations
-      }
-  }).catch(e => {
-      console.log(e);
-  })}
-
+    return Auth.signIn(user.email, user.password).then(() => {
+      this.authenticationSubject.next(true);
+    });
+  }
 
   public forgotPassword(user: IUser): Promise<any> {
     return Auth.forgotPassword(user.email).then(() => {
