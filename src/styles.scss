@@ -2,6 +2,12 @@
 
 @import "variable.scss";
 @import "auth.scss";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+* {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+}
+
 .btn-primary {
     background-color: $primary !important;
     border: none !important;
@@ -16,8 +22,31 @@
     box-shadow: none;
 }
 
+.btn-close:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
 .btn {
     box-shadow: none !important
+}
+
+button.btn.btn-outline-primary {
+    color: #2a85bb !important;
+    border: 1px solid #2a85bb !important;
+}
+
+button.btn.btn-outline-primar {
+    color: #2a85bb !important;
+    border: 1px solid #2a85bb !important;
+}
+
+button.btn.btn-outline-primar:hover {
+    // color: #2a85bb;
+    background-color: #2a85bb !important;
+    border: 1px solid #2a85bb !important;
+    color: #ffffff !important;
 }
 
 .input-btn:focus {
@@ -136,5 +165,7 @@ div.dataTables_wrapper div.dataTables_filter input {
 
 // calender::datepicker::end
 //end::Dashboard
+
 /* Importing Bootstrap SCSS file. */
+
 @import '~bootstrap/scss/bootstrap';

@@ -1,74 +1,50 @@
-<div class="modal-header">
-  <div *ngIf="toggleModal1 == true">Send Email</div>
-  <div *ngIf="toggleModal1 == false">Upload File</div>
-  <button
-    type="button"
-    class="btn-close"
-    aria-label="Close"
-    (click)="activeModal.dismiss('Cross click')"
-  ></button>
-</div>
-<div class="modal-body">
-  <ng-template [ngIf]="toggleModal1">
-    <form [formGroup]="sendEmailForm" (ngSubmit)="onEmailSend()">
-      <label class="form-label" for="form22Example2">Subject</label>
-      <input
-        type="text"
-        formControlName="subject"
-        id="subject"
-        class="form-control"
-        placeholder=""
-      />
-      <label class="form-label" for="form22Example2">To</label>
+<div class="mdl p-2">
+    <div class="modal-header">
+        <div *ngIf="toggleModal1 == true">
+            <h4>Send Email</h4>
+        </div>
+        <div *ngIf="toggleModal1 == false">
+            <h4>Upload File</h4>
+        </div>
+        <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body pt-3 pb-3">
+        <ng-template [ngIf]="toggleModal1">
+            <form [formGroup]="sendEmailForm" (ngSubmit)="onEmailSend()">
+                <label class="form-label" for="form22Example2">To</label>
+                <input type="text" formControlName="to" id="to" class="form-control mb-3" placeholder="" />
+                <label class="form-label" for="form22Example2">Subject</label>
+                <input type="text" formControlName="subject" id="subject" class="form-control mb-3" placeholder="" />
+                <label class="form-label" for="form22Example2">Message</label>
 
-      <input
-        type="text"
-        formControlName="to"
-        id="to"
-        class="form-control"
-        placeholder=""
-      />
-      <label class="form-label" for="form22Example2">Message</label>
+                <textarea class="form-control" formControlName="message" id="message" placeholder=""></textarea>
+                <button type="submit" class="btn btn-primary mt-3">Send email</button>
+            </form>
+        </ng-template>
+        <ng-template [ngIf]="!toggleModal2">
+            <div class="container">
+                <b>Upload File (.xls or .xlsx)</b>
 
-      <textarea
-        class="form-control"
-        formControlName="message"
-        id="message"
-        placeholder=""
-      ></textarea>
-      <button type="submit" class="btn btn-primary">send email</button>
-    </form>
-  </ng-template>
-  <ng-template [ngIf]="!toggleModal2">
-    <div class="container">
-      <h3>Upload File (.xls or .xlsx)</h3>
-      <br />
-      <input
-        type="file"
-        style="display: inline-block"
-        (change)="incomingfile($event)"
-        placeholder="Upload file"
-        accept=".xls, .xlsx"
-      />
-      <br /><br />
-      <button type="button" class="btn btn-info" (click)="upload()">
+                <input type="file" style="display: inline-block" (change)="incomingfile($event)" placeholder="Upload file" accept=".xls, .xlsx" class="mt-3" />
+                <br /><br />
+                <button type="button" class="btn btn-primary" (click)="upload()">
         Upload
       </button>
-      <br /><br />
-      <div class="jumbotron json_container">
-        <!-- <h5>Output:</h5> -->
-        <br />
-        <!-- {{ JSONObject.string }} -->
-      </div>
+                <br /><br />
+                <div class="jumbotron json_container">
+                    <h5>Output:</h5>
+                    <br /> {{ JSONObject.string }}
+                </div>
+            </div>
+        </ng-template>
     </div>
-  </ng-template>
-</div>
 
-<div class="modal-footer">
-  <Button class="btn btn-outline-dark" (click)="handleSendEmail()">
+    <div class="modal-footer">
+        <Button class="btn btn-outline-primar" (click)="handleSendEmail()">
     SendEmail
   </Button>
-  <Button class="btn btn-outline-dark" (click)="handleUploadFile()">
+        <Button class="btn btn-outline-primar" (click)="handleUploadFile()">
     Upload File
   </Button>
+    </div>
 </div>
