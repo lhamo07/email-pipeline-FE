@@ -28,6 +28,8 @@ import { SendEmailComponent } from './send-email/send-email.component';
 import { ForceChangePasswordComponent } from './force-change-password/force-change-password.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UploadFileComponent } from './upload-file/upload-file.component';
+import { ChipComponent } from './chip/chip.component';
+import { TagInputModule } from 'ngx-chips';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,7 @@ import { UploadFileComponent } from './upload-file/upload-file.component';
     // UploadFileComponent,
     SendEmailComponent,
     ForceChangePasswordComponent,
+    // ChipComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,6 +62,7 @@ import { UploadFileComponent } from './upload-file/upload-file.component';
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot(),
     NgbModule,
+    TagInputModule,
   ],
   providers: [
     {

@@ -18,6 +18,10 @@ import * as XLSX from 'xlsx';
   providers: [NgbModalConfig, NgbModal],
 })
 export class SendEmailComponent implements OnInit {
+  text1: string = '';
+  to: any[] = [];
+  text3: string = '';
+
   arrayBuffer: any;
   file: any;
   JSONObject = {
@@ -39,15 +43,23 @@ export class SendEmailComponent implements OnInit {
   ngOnInit(): void {
     this.sendEmailForm = new FormGroup({
       subject: new FormControl(null, [Validators.required]),
-      to: new FormControl(null, [Validators.required]),
+      to: new FormControl(null, [Validators.required, Validators.email]),
       message: new FormControl(null),
     });
   }
 
   onEmailSend() {
+    let toEmail = this.sendEmailForm.get('to')?.value;
+    let formattedEmails: any = [];
+    if (toEmail.length > 0) {
+      toEmail.forEach((eachEmail: any) => {
+        formattedEmails.push(eachEmail.value);
+      });
+    }
+    console.log(formattedEmails);
     let param = {
       subject: this.sendEmailForm.get('subject')?.value,
-      to: [this.sendEmailForm.get('to')?.value],
+      to: formattedEmails,
       message: this.sendEmailForm.get('message')?.value,
     };
     // console.log(param);
@@ -55,8 +67,11 @@ export class SendEmailComponent implements OnInit {
       (res) => {
         console.log('res', res);
         this.notify.showSuccess(res.message);
+        this.text1 = ''; //and reset the property afterwards.
+        // this.text2 = '';
+        this.text3 = '';
 
-        // this.router.navigate(['/dashboard']);
+        this.router.navigate(['/dashboard']);
       },
       (error) => {
         console.log('error', error);
@@ -97,5 +112,18 @@ export class SendEmailComponent implements OnInit {
     this.toggleModal1 = false;
     this.toggleModal2 = false;
     // this.modalService.open(UploadFileComponent);
+  }
+  public errorMessages = {
+    pattern: 'Email must be in format abc@abc.com',
+  };
+  public validators = [this.checkEmailValidator];
+  private checkEmailValidator(control: FormControl) {
+    const patternRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+
+    if (!patternRegex.test(control.value)) {
+      return { pattern: true };
+    } else {
+      return null;
+    }
   }
 }

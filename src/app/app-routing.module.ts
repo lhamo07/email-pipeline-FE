@@ -5,6 +5,7 @@ import { MfaComponent } from './Auth/mfa/mfa.component';
 import { NewPasswordComponent } from './Auth/new-password/new-password.component';
 import { ResetPasswordComponent } from './Auth/reset-password/reset-password.component';
 import { SignupComponent } from './Auth/signup/signup.component';
+import { ChipComponent } from './chip/chip.component';
 import { ComplaintComponent } from './complaint/complaint.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ForceChangePasswordComponent } from './force-change-password/force-change-password.component';
@@ -20,6 +21,8 @@ const routes: Routes = [
   { path: 'reset-password', component: ResetPasswordComponent },
   { path: 'new-password', component: NewPasswordComponent },
   { path: 'send-email', component: SendEmailComponent },
+  { path: 'force-change-pass', component: ForceChangePasswordComponent },
+  { path: 'test', component: ChipComponent },
 
   {
     path: 'dashboard',
